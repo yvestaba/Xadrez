@@ -8,7 +8,7 @@ public class VerTabuleiro {
 				System.out.print(Tabuleiro.layout[j][i] + " ");
 			}
 			System.out.println();
-		}
+		} System.out.println();
 	}
 
 }

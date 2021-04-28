@@ -134,7 +134,7 @@ public class TorreBranca extends PecaBranca {
 				System.out.print(this.verificaDestino[j][i] + " ");
 			}
 			System.out.println();
-		}
+		} System.out.println();
 	}
 
 	public int getPosicaoColuna() {

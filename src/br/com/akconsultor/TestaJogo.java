@@ -15,17 +15,26 @@ public class TestaJogo {
 		PeaoBranco peao8 = new PeaoBranco();
 
 		TorreBranca torre1 = new TorreBranca();
-		TorreBranca torre2 = new TorreBranca();
-
-		VerTabuleiro VerTabuleiro1 = new VerTabuleiro();
-		System.out.println();
-
-		peao1.getVerificaDestino();
-		System.out.println();
+		TorreBranca torre2 = new TorreBranca();		
 		
-		MovePecaBranca moveBranca1 = new MovePecaBranca((Peca)peao1, 0, 3);
+		CavaloBranco cavalo1 = new CavaloBranco();
+		CavaloBranco cavalo2 = new CavaloBranco();
 		
-		VerTabuleiro VerTabuleiro2 = new VerTabuleiro();
+		VerTabuleiro verTabuleiro1 = new VerTabuleiro();
+		
+		cavalo1.getVerificaDestino();
+		
+		MovePecaBranca moveBranca1 = new MovePecaBranca(cavalo1, 2, 2);		
+		
+		VerTabuleiro verTabuleiro2 = new VerTabuleiro();
+		
+		peao4.getVerificaDestino();
+		
+		MovePecaBranca moveBranca2 = new MovePecaBranca(peao4, 3, 3);
+		
+		VerTabuleiro verTabuleiro3 = new VerTabuleiro();
+		
+		torre1.getVerificaDestino();
 
 	}
 

@@ -91,7 +91,7 @@ public class PeaoBranco extends PecaBranca {
 				System.out.print(this.verificaDestino[j][i] + " ");
 			}
 			System.out.println();
-		}
+		} System.out.println();
 
 	}
 
