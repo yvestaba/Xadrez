@@ -15,26 +15,42 @@ public class TestaJogo {
 		PeaoBranco peao8 = new PeaoBranco();
 
 		TorreBranca torre1 = new TorreBranca();
-		TorreBranca torre2 = new TorreBranca();		
-		
+		TorreBranca torre2 = new TorreBranca();
+
 		CavaloBranco cavalo1 = new CavaloBranco();
 		CavaloBranco cavalo2 = new CavaloBranco();
 		
-		VerTabuleiro verTabuleiro1 = new VerTabuleiro();
-		
-		cavalo1.getVerificaDestino();
-		
-		MovePecaBranca moveBranca1 = new MovePecaBranca(cavalo1, 2, 2);		
-		
-		VerTabuleiro verTabuleiro2 = new VerTabuleiro();
+		BispoBranco bispo1 = new BispoBranco();
+		BispoBranco bispo2 = new BispoBranco();
+
+		VerTabuleiro vt1 = new VerTabuleiro();
 		
 		peao4.getVerificaDestino();
 		
-		MovePecaBranca moveBranca2 = new MovePecaBranca(peao4, 3, 3);
+		MovePecaBranca mb1 = new MovePecaBranca(peao4, 3, 3);
 		
-		VerTabuleiro verTabuleiro3 = new VerTabuleiro();
+		VerTabuleiro vt2 = new VerTabuleiro();
 		
-		torre1.getVerificaDestino();
+		bispo1.getVerificaDestino();
+		
+		MovePecaBranca mb2 = new MovePecaBranca(bispo1, 5, 3);
+		
+		VerTabuleiro vt3 = new VerTabuleiro();
+		
+		bispo1.getVerificaDestino();
+
+		MovePecaBranca mb3 = new MovePecaBranca(bispo1, 1, 7);
+		
+		VerTabuleiro vt4 = new VerTabuleiro();
+		
+		cavalo1.getVerificaDestino();
+		
+		MovePecaBranca mb4 = new MovePecaBranca(cavalo1, 2, 2);
+		
+		VerTabuleiro vt5 = new VerTabuleiro();
+		
+		cavalo1.getVerificaDestino();
+		
 
 	}
 

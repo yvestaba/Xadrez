@@ -16,5 +16,8 @@ public class MovePecaBranca {
 			System.out.println("Essa peça não pode mover assim");
 		}
 		
+		
+//nova posicao de linha e destino ok
+		
 	}
 }

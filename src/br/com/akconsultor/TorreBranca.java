@@ -126,6 +126,16 @@ public class TorreBranca extends PecaBranca {
 	}
 
 	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.tabuleiro.podeMover[i][j] = false;
+					this.tabuleiro.podeCapturar[i][j] = false;
+					this.tabuleiro.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
 		ondePodeAndar();
 		podeCapturar();
 		podeAndarOuCapturar();

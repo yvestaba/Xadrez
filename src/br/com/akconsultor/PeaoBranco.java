@@ -49,8 +49,7 @@ public class PeaoBranco extends PecaBranca {
 
 	@Override
 	public void podeCapturar() {
-		// o peão pode capturar na diagonal para a esquerda (coluna -1 == esquerda;
-		// linha + 1 == frente)
+		// o peão pode capturar na diagonal para a esquerda (coluna -1 == esquerda; linha + 1 == frente)
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha + 1]) {
 				this.tabuleiro.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha + 1] = true;
@@ -83,6 +82,16 @@ public class PeaoBranco extends PecaBranca {
 
 	@Override
 	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.tabuleiro.podeMover[i][j] = false;
+					this.tabuleiro.podeCapturar[i][j] = false;
+					this.tabuleiro.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
 		ondePodeAndar();
 		podeCapturar();
 		podeAndarOuCapturar();
