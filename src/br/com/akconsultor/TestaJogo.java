@@ -26,6 +26,8 @@ public class TestaJogo {
 		BispoBranco bispo1 = new BispoBranco();
 		BispoBranco bispo2 = new BispoBranco();
 		
+		DamaBranca damaB = new DamaBranca();
+		
 		PeaoPreto p1 = new PeaoPreto();
 		PeaoPreto p2 = new PeaoPreto();
 		PeaoPreto p3 = new PeaoPreto();
@@ -37,42 +39,50 @@ public class TestaJogo {
 		
 		TorrePreta t1 = new TorrePreta();
 		TorrePreta t2 = new TorrePreta();
+		
+		CavaloPreto c1 = new CavaloPreto();
+		CavaloPreto c2 = new CavaloPreto();
+		
+		BispoPreto b1 = new BispoPreto();
+		BispoPreto b2 = new BispoPreto();
+		
+		DamaPreta damaP = new DamaPreta();
 
-		VerTabuleiro vt1 = new VerTabuleiro();
-		
-		peao4.getVerificaDestino();
-		new MovePecaBranca(peao4, 3, 3);
-		
-		
-		
 		p4.getVerificaDestino();
 		
-		new MovePecaPreta(p4, 4, 4);
-		
-		
-		
-		peao4.getVerificaDestino();
-		
-		new MovePecaBranca(peao4, 4, 4);
-		
-	
+		tabuleiro.movePecaPreta(p4, 4, 4);
 		
 		p2.getVerificaDestino();
 		
-		new MovePecaPreta(p2, 6, 4);
+		tabuleiro.movePecaPreta(p2, 6, 5);
 		
-		bispo1.getVerificaDestino();
+		b1.getVerificaDestino();
 		
-		new MovePecaBranca(bispo1, 6, 4);
+		tabuleiro.movePecaPreta(b1, 2, 4);
 		
-		t1.getVerificaDestino();
+		b1.getVerificaDestino();
 		
-		new MovePecaPreta(t1, 4, 7);
+		tabuleiro.movePecaPreta(b1, 5, 1);
 		
-		t1.getVerificaDestino();
+		peao5.getVerificaDestino();
 		
-		new MovePecaPreta(t1, 4, 4);
-
+		tabuleiro.movePecaBranca(peao5, 4, 3);
+		
+		damaB.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(damaB, 6, 3);
+		
+		damaB.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(damaB, 3, 6);
+		
+		damaP.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(damaP, 6, 4);
+		
+		damaP.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(damaP, 6, 1);
 		
 
 	}

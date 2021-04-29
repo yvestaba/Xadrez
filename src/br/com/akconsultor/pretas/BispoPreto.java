@@ -1,20 +1,17 @@
-package br.com.akconsultor.brancas;
+package br.com.akconsultor.pretas;
 
 import br.com.akconsultor.Tabuleiro;
 
-public class BispoBranco extends PecaBranca {
+public class BispoPreto extends PecaPreta{
 
-	private String nome = "B";
-
-	
-
+	private String nome = "b";
 
 	@Override
 	protected void casaInicial() {
-		if (Tabuleiro.temPecaBranca[2][0] == false) {
-			this.setPosicao(2, 0);
+		if (Tabuleiro.temPecaPreta[5][7] == false) {
+			this.setPosicao(5, 7);
 		} else {
-			this.setPosicao(5, 0);
+			this.setPosicao(2, 7);
 		}
 
 	}
@@ -94,10 +91,10 @@ public class BispoBranco extends PecaBranca {
 		for (int i  = this.posicaoColuna; i < 7 ; i++) {
 			int j = this.posicaoLinha + (i - this.posicaoColuna);
 			try {
-			if (Tabuleiro.temPecaBranca[i + 1][j + 1]) {
+			if (Tabuleiro.temPecaPreta[i + 1][j + 1]) {
 				break;
 			}
-			if (Tabuleiro.temPecaPreta[i + 1][j + 1]) {
+			if (Tabuleiro.temPecaBranca[i + 1][j + 1]) {
 				this.podeCapturar[i + 1][j + 1] = true;
 				break;
 			}
@@ -111,10 +108,10 @@ public class BispoBranco extends PecaBranca {
 		for (int i  = this.posicaoColuna; i < 7 ; i++) {
 			int j = this.posicaoLinha - (i - this.posicaoColuna);
 			try {
-			if (Tabuleiro.temPecaBranca[i + 1][j - 1]) {
+			if (Tabuleiro.temPecaPreta[i + 1][j - 1]) {
 				break;
 			}
-			if (Tabuleiro.temPecaPreta[i + 1][j - 1]) {
+			if (Tabuleiro.temPecaBranca[i + 1][j - 1]) {
 				this.podeCapturar[i + 1][j - 1] = true;
 				break;
 			}
@@ -128,10 +125,10 @@ public class BispoBranco extends PecaBranca {
 		for (int i  = this.posicaoColuna; i > 0 ; i--) {
 			try {
 			int j = this.posicaoLinha - (this.posicaoColuna - i);
-			if (Tabuleiro.temPecaBranca[i - 1][j - 1]) {
+			if (Tabuleiro.temPecaPreta[i - 1][j - 1]) {
 				break;
 			}
-			if (Tabuleiro.temPecaPreta[i - 1][j - 1]) {
+			if (Tabuleiro.temPecaBranca[i - 1][j - 1]) {
 				this.podeCapturar[i - 1][j - 1] = true;
 				break;
 			} 
@@ -145,10 +142,10 @@ public class BispoBranco extends PecaBranca {
 		for (int i  = this.posicaoColuna; i > 0 ; i--) {
 			int j = this.posicaoLinha + (this.posicaoColuna - i);
 			try {
-			if (Tabuleiro.temPecaBranca[i - 1][j + 1]) {
+			if (Tabuleiro.temPecaPreta[i - 1][j + 1]) {
 				break;
 			}
-			if (Tabuleiro.temPecaPreta[i - 1][j + 1]) {
+			if (Tabuleiro.temPecaBranca[i - 1][j + 1]) {
 				this.podeCapturar[i - 1][j + 1] = true;
 				break;
 			}
@@ -164,10 +161,9 @@ public class BispoBranco extends PecaBranca {
 		return nome;
 	}
 
-	public BispoBranco() {
+	public BispoPreto() {
 
 		casaInicial();
 
 	}
-
 }

@@ -21,7 +21,7 @@ public abstract class PecaBranca extends Peca{
 	public void getCapturou() {
 		if(this.podeCapturar[this.posicaoColuna][this.posicaoLinha]) {
 			Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha] = false;
-			System.out.println("Peça preta capturada");
+			System.out.println("Peça preta capturada\n");
 		}
 	}
 }

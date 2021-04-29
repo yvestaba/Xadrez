@@ -1,18 +1,17 @@
-package br.com.akconsultor.brancas;
+package br.com.akconsultor.pretas;
 
 import br.com.akconsultor.Tabuleiro;
 
-public class CavaloBranco extends PecaBranca {
-
-	private String nome = "C";
+public class CavaloPreto extends PecaPreta{
+	private String nome = "c";
 
 
 	@Override
 	public void casaInicial() {
-		if (Tabuleiro.temPecaBranca[1][0] == false) {
-			this.setPosicao(1, 0);
+		if (Tabuleiro.temPecaPreta[6][7] == false) {
+			this.setPosicao(6, 7);
 		} else {
-			this.setPosicao(6, 0);
+			this.setPosicao(1, 7);
 		}
 
 	}
@@ -96,7 +95,7 @@ public class CavaloBranco extends PecaBranca {
 	@Override
 	public void podeCapturar() {
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha + 2]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha + 2]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha + 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -104,7 +103,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha + 2]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha + 2]) {
 				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha + 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -112,7 +111,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha - 2]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha - 2]) {
 				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha - 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -120,7 +119,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha - 2]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha - 2]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha - 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -128,7 +127,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha + 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 2][this.posicaoLinha + 1]) {
 				this.podeCapturar[this.posicaoColuna + 2][this.posicaoLinha + 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -136,7 +135,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 2][this.posicaoLinha + 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 2][this.posicaoLinha + 1]) {
 				this.podeCapturar[this.posicaoColuna - 2][this.posicaoLinha + 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -144,7 +143,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 2][this.posicaoLinha - 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 2][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna - 2][this.posicaoLinha - 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -152,7 +151,7 @@ public class CavaloBranco extends PecaBranca {
 		}
 
 		try {
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha - 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 2][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna + 2][this.posicaoLinha - 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -161,16 +160,19 @@ public class CavaloBranco extends PecaBranca {
 
 	}
 
+
+	
+
 	public String getNome() {
 		return nome;
 	}
 
-	public CavaloBranco() {
+
+
+	public CavaloPreto() {
 
 		casaInicial();
 
 	}
-
-
 
 }

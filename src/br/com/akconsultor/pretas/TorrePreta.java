@@ -5,7 +5,6 @@ import br.com.akconsultor.Tabuleiro;
 public class TorrePreta extends PecaPreta{
 	private String nome = "t";
 
-	Tabuleiro tabuleiro = new Tabuleiro();
 
 	@Override
 	public void casaInicial() {
@@ -109,40 +108,6 @@ public class TorrePreta extends PecaPreta{
 		}
 
 	}
-
-	public void podeAndarOuCapturar() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				if (this.podeMover[i][j] || this.podeCapturar[i][j]) {
-					this.verificaDestino[i][j] = true;
-				}
-			}
-		}
-	}
-
-	public void getVerificaDestino() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-					
-					this.verificaDestino[i][j] = false;
-					this.podeMover[i][j] = false;
-					this.podeCapturar[i][j] = false;
-					this.podeMoverOuCapturar[i][j] = false;
-				
-			}
-		}
-		ondePodeAndar();
-		podeCapturar();
-		podeAndarOuCapturar();
-		for (int i = 7; i >= 0; i--) {
-			for (int j = 0; j < 8; j++) {
-				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
-			}
-			System.out.println();
-		} System.out.println();
-	}
-	
-
 
 	public String getNome() {
 		return nome;
