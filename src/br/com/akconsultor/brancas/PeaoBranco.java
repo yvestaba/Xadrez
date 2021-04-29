@@ -35,7 +35,7 @@ public class PeaoBranco extends PecaBranca {
 						|| Tabuleiro.temPecaBranca[this.posicaoColuna][1 + i] == true) {
 					break;
 				} else {
-					this.tabuleiro.podeMover[this.posicaoColuna][1 + i] = true;
+					this.podeMover[this.posicaoColuna][1 + i] = true;
 				}
 			}
 		}
@@ -43,7 +43,7 @@ public class PeaoBranco extends PecaBranca {
 		// ainda verifica se tem peça no caminho
 		else if (Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha + 1] == false
 				|| Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha + 1] == false) {
-			this.tabuleiro.podeMover[this.posicaoColuna][this.posicaoLinha + 1] = true;
+			this.podeMover[this.posicaoColuna][this.posicaoLinha + 1] = true;
 		}
 
 	}
@@ -53,7 +53,7 @@ public class PeaoBranco extends PecaBranca {
 		// o peão pode capturar na diagonal para a esquerda (coluna -1 == esquerda; linha + 1 == frente)
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha + 1]) {
-				this.tabuleiro.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha + 1] = true;
+				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha + 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 		}
@@ -61,7 +61,7 @@ public class PeaoBranco extends PecaBranca {
 		// o mesmo acontece com diagonal para a direita (coluna + 1 == direita)
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha + 1]) {
-				this.tabuleiro.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha + 1] = true;
+				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha + 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
@@ -73,7 +73,7 @@ public class PeaoBranco extends PecaBranca {
 	public void podeAndarOuCapturar() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (this.tabuleiro.podeMover[i][j] || this.tabuleiro.podeCapturar[i][j]) {
+				if (this.podeMover[i][j] || this.podeCapturar[i][j]) {
 					this.verificaDestino[i][j] = true;
 				}
 			}
@@ -87,9 +87,9 @@ public class PeaoBranco extends PecaBranca {
 			for (int j = 0; j < 8; j++) {
 					
 					this.verificaDestino[i][j] = false;
-					this.tabuleiro.podeMover[i][j] = false;
-					this.tabuleiro.podeCapturar[i][j] = false;
-					this.tabuleiro.podeMoverOuCapturar[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
 				
 			}
 		}

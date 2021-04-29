@@ -5,6 +5,9 @@ public abstract class Peca {
 	protected int posicaoLinha;
 	protected String nome;
 	public boolean[][] verificaDestino = new boolean[8][8];
+	public boolean[][] podeMover = new boolean[8][8];
+	public boolean[][] podeCapturar = new boolean[8][8];
+	public boolean[][] podeMoverOuCapturar = new boolean[8][8];
 	
 	public abstract void setPosicao(int coluna, int linha);
 	

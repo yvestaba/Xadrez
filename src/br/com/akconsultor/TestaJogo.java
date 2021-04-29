@@ -34,19 +34,45 @@ public class TestaJogo {
 		PeaoPreto p6 = new PeaoPreto();
 		PeaoPreto p7 = new PeaoPreto();
 		PeaoPreto p8 = new PeaoPreto();
+		
+		TorrePreta t1 = new TorrePreta();
+		TorrePreta t2 = new TorrePreta();
 
 		VerTabuleiro vt1 = new VerTabuleiro();
 		
 		peao4.getVerificaDestino();
-		MovePecaBranca mb1 = new MovePecaBranca(peao4, 3, 3);
+		new MovePecaBranca(peao4, 3, 3);
 		
-		VerTabuleiro vt2 = new VerTabuleiro();
+		
 		
 		p4.getVerificaDestino();
 		
-		MovePecaPreta mp1 = new MovePecaPreta(p4, 4, 4);
+		new MovePecaPreta(p4, 4, 4);
 		
-		VerTabuleiro vt3 = new VerTabuleiro();
+		
+		
+		peao4.getVerificaDestino();
+		
+		new MovePecaBranca(peao4, 4, 4);
+		
+	
+		
+		p2.getVerificaDestino();
+		
+		new MovePecaPreta(p2, 6, 4);
+		
+		bispo1.getVerificaDestino();
+		
+		new MovePecaBranca(bispo1, 6, 4);
+		
+		t1.getVerificaDestino();
+		
+		new MovePecaPreta(t1, 4, 7);
+		
+		t1.getVerificaDestino();
+		
+		new MovePecaPreta(t1, 4, 4);
+
 		
 
 	}

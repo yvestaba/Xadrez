@@ -3,9 +3,7 @@ package br.com.akconsultor;
 public class Tabuleiro {
 	public static boolean[][] temPecaBranca = new boolean[8][8];
 	public static boolean[][] temPecaPreta = new boolean[8][8];
-	public boolean[][] podeMover = new boolean[8][8];
-	public boolean[][] podeCapturar = new boolean[8][8];
-	public boolean[][] podeMoverOuCapturar = new boolean[8][8];
+
 	public static String[][] layout = new String[8][8];
 
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
@@ -22,11 +20,6 @@ public class Tabuleiro {
 			}
 		}
 
-		for (int m = 0; m < 8; m++) {
-			for (int n = 0; n < 8; n++) {
-				podeMover[m][n] = false;
-			}
-		}
 		for (int o = 0; o < 8; o++) {
 			for (int p = 0; p < 8; p++) {
 				layout[o][p] = " ";

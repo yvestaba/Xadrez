@@ -30,7 +30,7 @@ public class BispoBranco extends PecaBranca {
 					Tabuleiro.temPecaBranca[i + 1][j + 1]) {
 				break;
 			} else {
-				this.tabuleiro.podeMover[i + 1][j + 1] = true;
+				this.podeMover[i + 1][j + 1] = true;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
 				break;
@@ -46,7 +46,7 @@ public class BispoBranco extends PecaBranca {
 					Tabuleiro.temPecaBranca[i + 1][j - 1]) {
 				break;
 			} else {
-				this.tabuleiro.podeMover[i + 1][j - 1] = true;
+				this.podeMover[i + 1][j - 1] = true;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
 				break;
@@ -62,7 +62,7 @@ public class BispoBranco extends PecaBranca {
 					Tabuleiro.temPecaBranca[i - 1][j - 1]) {
 				break;
 			} else {
-				this.tabuleiro.podeMover[i - 1][j - 1] = true;
+				this.podeMover[i - 1][j - 1] = true;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
 				break;
@@ -78,7 +78,7 @@ public class BispoBranco extends PecaBranca {
 					Tabuleiro.temPecaBranca[i - 1][j + 1]) {
 				break;
 			} else {
-				this.tabuleiro.podeMover[i - 1][j + 1] = true;
+				this.podeMover[i - 1][j + 1] = true;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
 				break;
@@ -99,7 +99,7 @@ public class BispoBranco extends PecaBranca {
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i + 1][j + 1]) {
-				this.tabuleiro.podeCapturar[i + 1][j + 1] = true;
+				this.podeCapturar[i + 1][j + 1] = true;
 				break;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
@@ -116,7 +116,7 @@ public class BispoBranco extends PecaBranca {
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i + 1][j - 1]) {
-				this.tabuleiro.podeCapturar[i + 1][j - 1] = true;
+				this.podeCapturar[i + 1][j - 1] = true;
 				break;
 			}
 			} catch(ArrayIndexOutOfBoundsException ex) {
@@ -133,7 +133,7 @@ public class BispoBranco extends PecaBranca {
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i - 1][j - 1]) {
-				this.tabuleiro.podeCapturar[i - 1][j - 1] = true;
+				this.podeCapturar[i - 1][j - 1] = true;
 				break;
 			} 
 			}catch(ArrayIndexOutOfBoundsException ex) {
@@ -150,7 +150,7 @@ public class BispoBranco extends PecaBranca {
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i - 1][j + 1]) {
-				this.tabuleiro.podeCapturar[i - 1][j + 1] = true;
+				this.podeCapturar[i - 1][j + 1] = true;
 				break;
 			}
 			}catch(ArrayIndexOutOfBoundsException ex) {
@@ -165,7 +165,7 @@ public class BispoBranco extends PecaBranca {
 	public void podeAndarOuCapturar() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (this.tabuleiro.podeMover[i][j] || this.tabuleiro.podeCapturar[i][j]) {
+				if (this.podeMover[i][j] || this.podeCapturar[i][j]) {
 					this.verificaDestino[i][j] = true;
 				}
 			}
@@ -179,9 +179,9 @@ public class BispoBranco extends PecaBranca {
 			for (int j = 0; j < 8; j++) {
 					
 					this.verificaDestino[i][j] = false;
-					this.tabuleiro.podeMover[i][j] = false;
-					this.tabuleiro.podeCapturar[i][j] = false;
-					this.tabuleiro.podeMoverOuCapturar[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
 				
 			}
 		}
