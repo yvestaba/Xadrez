@@ -12,15 +12,14 @@ public class PeaoBranco extends PecaBranca {
 		// está formada e posiciona em uma casa vazia
 		for (int i = 0; i < 8; i++) {
 			if (Tabuleiro.temPecaBranca[i][1] == false) {
-				Tabuleiro.temPecaBranca[i][1] = true;
-				this.posicaoColuna = i;
-				this.posicaoLinha = 1;
-				Tabuleiro.layout[i][1] = this.nome;
+				this.setPosicao(i, 1);
 				break;
 			}
 		}
 
 	}
+	
+
 
 	@Override
 	public void ondePodeAndar() {
@@ -104,21 +103,6 @@ public class PeaoBranco extends PecaBranca {
 
 	}
 
-	public int getPosicaoColuna() {
-		return posicaoColuna;
-	}
-
-	public void setPosicaoColuna(int posicaoColuna) {
-		this.posicaoColuna = posicaoColuna;
-	}
-
-	public int getPosicaoLinha() {
-		return posicaoLinha;
-	}
-
-	public void setPosicaoLinha(int posicaoLinha) {
-		this.posicaoLinha = posicaoLinha;
-	}
 
 	public String getNome() {
 		return nome;
@@ -129,5 +113,10 @@ public class PeaoBranco extends PecaBranca {
 		casaInicial();
 
 	}
+
+
+	
+	
+	
 
 }

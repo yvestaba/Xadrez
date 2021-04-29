@@ -9,15 +9,9 @@ public class CavaloBranco extends PecaBranca {
 	@Override
 	public void casaInicial() {
 		if (Tabuleiro.temPecaBranca[1][0] == false) {
-			this.posicaoColuna = 1;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[1][0] = true;
-			Tabuleiro.layout[1][0] = this.nome;
+			this.setPosicao(1, 0);
 		} else {
-			this.posicaoColuna = 6;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[6][0] = true;
-			Tabuleiro.layout[6][0] = this.nome;
+			this.setPosicao(6, 0);
 		}
 
 	}
@@ -59,7 +53,7 @@ public class CavaloBranco extends PecaBranca {
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
-		
+
 		try {
 			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 2][this.posicaoLinha + 1] == false
 					&& Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha + 1] == false) {
@@ -131,7 +125,7 @@ public class CavaloBranco extends PecaBranca {
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
-		
+
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha + 1]) {
 				this.tabuleiro.podeCapturar[this.posicaoColuna + 2][this.posicaoLinha + 1] = true;
@@ -182,12 +176,12 @@ public class CavaloBranco extends PecaBranca {
 	public void getVerificaDestino() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-					
-					this.verificaDestino[i][j] = false;
-					this.tabuleiro.podeMover[i][j] = false;
-					this.tabuleiro.podeCapturar[i][j] = false;
-					this.tabuleiro.podeMoverOuCapturar[i][j] = false;
-				
+
+				this.verificaDestino[i][j] = false;
+				this.tabuleiro.podeMover[i][j] = false;
+				this.tabuleiro.podeCapturar[i][j] = false;
+				this.tabuleiro.podeMoverOuCapturar[i][j] = false;
+
 			}
 		}
 		ondePodeAndar();
@@ -198,24 +192,9 @@ public class CavaloBranco extends PecaBranca {
 				System.out.print(this.verificaDestino[j][i] + " ");
 			}
 			System.out.println();
-		} System.out.println();
+		}
+		System.out.println();
 
-	}
-	
-	public int getPosicaoColuna() {
-		return posicaoColuna;
-	}
-
-	public void setPosicaoColuna(int posicaoColuna) {
-		this.posicaoColuna = posicaoColuna;
-	}
-
-	public int getPosicaoLinha() {
-		return posicaoLinha;
-	}
-
-	public void setPosicaoLinha(int posicaoLinha) {
-		this.posicaoLinha = posicaoLinha;
 	}
 
 	public String getNome() {
@@ -227,5 +206,7 @@ public class CavaloBranco extends PecaBranca {
 		casaInicial();
 
 	}
+
+
 
 }

@@ -5,19 +5,15 @@ public class BispoBranco extends PecaBranca {
 	private String nome = "B";
 
 	Tabuleiro tabuleiro = new Tabuleiro();
+	
+
 
 	@Override
-	public void casaInicial() {
+	protected void casaInicial() {
 		if (Tabuleiro.temPecaBranca[2][0] == false) {
-			this.posicaoColuna = 2;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[2][0] = true;
-			Tabuleiro.layout[2][0] = this.nome;
+			this.setPosicao(2, 0);
 		} else {
-			this.posicaoColuna = 5;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[5][0] = true;
-			Tabuleiro.layout[5][0] = this.nome;
+			this.setPosicao(5, 0);
 		}
 
 	}
@@ -198,22 +194,6 @@ public class BispoBranco extends PecaBranca {
 		}
 		System.out.println();
 
-	}
-
-	public int getPosicaoColuna() {
-		return posicaoColuna;
-	}
-
-	public void setPosicaoColuna(int posicaoColuna) {
-		this.posicaoColuna = posicaoColuna;
-	}
-
-	public int getPosicaoLinha() {
-		return posicaoLinha;
-	}
-
-	public void setPosicaoLinha(int posicaoLinha) {
-		this.posicaoLinha = posicaoLinha;
 	}
 
 	public String getNome() {

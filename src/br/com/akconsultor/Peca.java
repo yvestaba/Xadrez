@@ -6,7 +6,9 @@ public abstract class Peca {
 	protected String nome;
 	public boolean[][] verificaDestino = new boolean[8][8];
 	
-	public abstract void casaInicial();
+	public abstract void setPosicao(int coluna, int linha);
+	
+	protected abstract void casaInicial();
 
 	public abstract void ondePodeAndar();
 
@@ -16,23 +18,14 @@ public abstract class Peca {
 
 	public abstract void getVerificaDestino();
 	
-	public int getPosicaoColuna() {
-		return posicaoColuna;
-	}
-
-	public void setPosicaoColuna(int posicaoColuna) {
-		this.posicaoColuna = posicaoColuna;
-	}
-
-	public int getPosicaoLinha() {
-		return posicaoLinha;
-	}
-
-	public void setPosicaoLinha(int posicaoLinha) {
-		this.posicaoLinha = posicaoLinha;
-	}
+	public abstract void desfazPosicao();
 	
+
 	public String getNome() {
 		return nome;
+	}
+	
+	public void getPosicao() {
+		System.out.println("Coluna: " + this.posicaoColuna + " Linha: " + this.posicaoLinha);
 	}
 }

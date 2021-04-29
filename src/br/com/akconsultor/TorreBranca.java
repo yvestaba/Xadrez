@@ -9,15 +9,9 @@ public class TorreBranca extends PecaBranca {
 	@Override
 	public void casaInicial() {
 		if (Tabuleiro.temPecaBranca[0][0] == false) {
-			this.posicaoColuna = 0;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[0][0] = true;
-			Tabuleiro.layout[0][0] = this.nome;
+			this.setPosicao(0, 0);
 		} else {
-			this.posicaoColuna = 7;
-			this.posicaoLinha = 0;
-			Tabuleiro.temPecaBranca[7][0] = true;
-			Tabuleiro.layout[7][0] = this.nome;
+			this.setPosicao(7, 0);
 		}
 
 	}
@@ -147,22 +141,6 @@ public class TorreBranca extends PecaBranca {
 		} System.out.println();
 	}
 
-	public int getPosicaoColuna() {
-		return posicaoColuna;
-	}
-
-	public void setPosicaoColuna(int posicaoColuna) {
-		this.posicaoColuna = posicaoColuna;
-	}
-
-	public int getPosicaoLinha() {
-		return posicaoLinha;
-	}
-
-	public void setPosicaoLinha(int posicaoLinha) {
-		this.posicaoLinha = posicaoLinha;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -172,5 +150,6 @@ public class TorreBranca extends PecaBranca {
 		casaInicial();
 
 	}
+
 
 }

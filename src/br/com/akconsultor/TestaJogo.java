@@ -30,28 +30,10 @@ public class TestaJogo {
 		MovePecaBranca mb1 = new MovePecaBranca(peao4, 3, 3);
 		
 		VerTabuleiro vt2 = new VerTabuleiro();
+		VerOndeTemPecaBranca vb1 = new VerOndeTemPecaBranca();
 		
-		bispo1.getVerificaDestino();
+		peao4.getPosicao();
 		
-		MovePecaBranca mb2 = new MovePecaBranca(bispo1, 5, 3);
-		
-		VerTabuleiro vt3 = new VerTabuleiro();
-		
-		bispo1.getVerificaDestino();
-
-		MovePecaBranca mb3 = new MovePecaBranca(bispo1, 1, 7);
-		
-		VerTabuleiro vt4 = new VerTabuleiro();
-		
-		cavalo1.getVerificaDestino();
-		
-		MovePecaBranca mb4 = new MovePecaBranca(cavalo1, 2, 2);
-		
-		VerTabuleiro vt5 = new VerTabuleiro();
-		
-		cavalo1.getVerificaDestino();
-		
-
 	}
 
 }
