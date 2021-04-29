@@ -1,5 +1,8 @@
 package br.com.akconsultor;
 
+import br.com.akconsultor.brancas.*;
+import br.com.akconsultor.pretas.*;
+
 public class TestaJogo {
 	public static void main(String[] args) {
 		Tabuleiro tabuleiro = new Tabuleiro();
@@ -22,18 +25,30 @@ public class TestaJogo {
 		
 		BispoBranco bispo1 = new BispoBranco();
 		BispoBranco bispo2 = new BispoBranco();
+		
+		PeaoPreto p1 = new PeaoPreto();
+		PeaoPreto p2 = new PeaoPreto();
+		PeaoPreto p3 = new PeaoPreto();
+		PeaoPreto p4 = new PeaoPreto();
+		PeaoPreto p5 = new PeaoPreto();
+		PeaoPreto p6 = new PeaoPreto();
+		PeaoPreto p7 = new PeaoPreto();
+		PeaoPreto p8 = new PeaoPreto();
 
 		VerTabuleiro vt1 = new VerTabuleiro();
 		
 		peao4.getVerificaDestino();
-		
 		MovePecaBranca mb1 = new MovePecaBranca(peao4, 3, 3);
 		
 		VerTabuleiro vt2 = new VerTabuleiro();
-		VerOndeTemPecaBranca vb1 = new VerOndeTemPecaBranca();
 		
-		peao4.getPosicao();
+		p4.getVerificaDestino();
 		
+		MovePecaPreta mp1 = new MovePecaPreta(p4, 4, 4);
+		
+		VerTabuleiro vt3 = new VerTabuleiro();
+		
+
 	}
 
 }

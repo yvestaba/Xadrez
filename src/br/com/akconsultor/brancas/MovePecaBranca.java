@@ -1,7 +1,8 @@
-package br.com.akconsultor;
+package br.com.akconsultor.brancas;
+
 
 public class MovePecaBranca {
-	MovePecaBranca(Peca a, int colunaDestino, int linhaDestino){
+	public MovePecaBranca(PecaBranca a, int colunaDestino, int linhaDestino){
 
 		
 		if(a.verificaDestino[colunaDestino][linhaDestino]) {

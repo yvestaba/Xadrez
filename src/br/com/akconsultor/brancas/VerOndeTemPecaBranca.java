@@ -1,4 +1,6 @@
-package br.com.akconsultor;
+package br.com.akconsultor.brancas;
+
+import br.com.akconsultor.Tabuleiro;
 
 public class VerOndeTemPecaBranca {
 	public VerOndeTemPecaBranca() {
