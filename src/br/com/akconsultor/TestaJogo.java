@@ -28,6 +28,8 @@ public class TestaJogo {
 		
 		DamaBranca damaB = new DamaBranca();
 		
+		ReiBranco reiB = new ReiBranco();
+		
 		PeaoPreto p1 = new PeaoPreto();
 		PeaoPreto p2 = new PeaoPreto();
 		PeaoPreto p3 = new PeaoPreto();
@@ -47,42 +49,93 @@ public class TestaJogo {
 		BispoPreto b2 = new BispoPreto();
 		
 		DamaPreta damaP = new DamaPreta();
-
-		p4.getVerificaDestino();
 		
-		tabuleiro.movePecaPreta(p4, 4, 4);
-		
-		p2.getVerificaDestino();
-		
-		tabuleiro.movePecaPreta(p2, 6, 5);
-		
-		b1.getVerificaDestino();
-		
-		tabuleiro.movePecaPreta(b1, 2, 4);
-		
-		b1.getVerificaDestino();
-		
-		tabuleiro.movePecaPreta(b1, 5, 1);
+		tabuleiro.verTabuleiro();
 		
 		peao5.getVerificaDestino();
 		
 		tabuleiro.movePecaBranca(peao5, 4, 3);
 		
-		damaB.getVerificaDestino();
+//		for(int i = 0; i < 8; i++) {
+//			System.out.println(Tabuleiro.checaEnPassant[i]);
+//		}
 		
-		tabuleiro.movePecaBranca(damaB, 6, 3);
+		peao5.getVerificaDestino();
 		
-		damaB.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao5, 4, 4);
 		
-		tabuleiro.movePecaBranca(damaB, 3, 6);
+		p3.getVerificaDestino();
 		
-		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(p3, 5, 4);
 		
-		tabuleiro.movePecaPreta(damaP, 6, 4);
+//		for(int i = 0; i < 8; i++) {
+//			System.out.println(Tabuleiro.checaEnPassant[i]);
+//		}
 		
-		damaP.getVerificaDestino();
+		p5.getVerificaDestino();
 		
-		tabuleiro.movePecaPreta(damaP, 6, 1);
+		tabuleiro.movePecaPreta(p5, 3, 4);
+		
+		peao5.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao5, 3, 5);
+		
+		tabuleiro.verOndeTemPecaPreta();
+		
+		p3.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p3, 5, 3);
+		
+		peao7.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao7, 6, 3);
+		
+		p3.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p3, 6, 2);
+		
+		p6.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p6, 2, 4);
+		
+		p6.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p6, 2, 3);
+		
+		peao2.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao2, 1, 3);
+		
+		p6.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p6, 1, 2);
+		
+		peao1.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao2, 0, 3);
+		
+		peao1.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao1, 0, 3);
+		
+		peao1.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao1, 0, 4);
+		
+		p7.getVerificaDestino();
+		
+		tabuleiro.movePecaPreta(p7, 1, 4);
+		
+		peao1.getVerificaDestino();
+		
+		tabuleiro.movePecaBranca(peao1, 1, 5);
+		
+		
+		
+		
+	
+		
+		
 		
 
 	}

@@ -42,7 +42,7 @@ public class PeaoPreto extends PecaPreta{
 		// ainda verifica se tem peça no caminho
 		else if (Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha - 1] == false
 				|| Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha - 1] == false) {
-			this.podeMover[this.posicaoColuna][this.posicaoLinha + 1] = true;
+			this.podeMover[this.posicaoColuna][this.posicaoLinha - 1] = true;
 		}
 
 	}
@@ -70,6 +70,71 @@ public class PeaoPreto extends PecaPreta{
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public boolean isEnPassantDireita() {
+		return enPassantDireita;
+	}
+
+	public void setEnPassantDireita(boolean enPassant) {
+		try {
+		if (Tabuleiro.checaEnPassant[this.posicaoColuna +1]
+			&& this.posicaoLinha == 3) {
+			this.enPassantDireita = enPassant;
+			this.verificaDestino[this.posicaoColuna + 1][2] = true;
+		}
+		} catch(Exception ex) {
+			
+		}
+	}
+
+	public boolean isEnPassantEsquerda() {
+		return enPassantEsquerda;
+	}
+
+	public void setEnPassantEsquerda(boolean enPassant) {
+		try {
+			if (Tabuleiro.checaEnPassant[this.posicaoColuna - 1]
+				&& this.posicaoLinha == 3) {
+				this.enPassantEsquerda = enPassant;
+				this.verificaDestino[this.posicaoColuna - 1][2] = true;
+			}
+			} catch(Exception ex) {
+				
+			}
+		
+	}
+	
+	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
+		ondePodeAndar();
+		podeCapturar();
+		podeAndarOuCapturar();
+		setEnPassantDireita(true);
+		setEnPassantEsquerda(true);
+		for (int i = 7; i >= 0; i--) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+			}
+			System.out.println();
+		} System.out.println();
+
+	}
+	
+	public void resetEnPassant() {
+		this.enPassantDireita = false;
+		this.enPassantEsquerda = false;
+		
+
 	}
 
 	public PeaoPreto() {

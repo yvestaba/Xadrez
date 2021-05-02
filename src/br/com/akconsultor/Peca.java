@@ -8,6 +8,8 @@ public abstract class Peca {
 	protected boolean[][] podeMover = new boolean[8][8];
 	protected boolean[][] podeCapturar = new boolean[8][8];
 	protected boolean[][] podeMoverOuCapturar = new boolean[8][8];
+	protected boolean enPassantDireita = false;
+	protected boolean enPassantEsquerda = false;
 	
 	public abstract void setPosicao(int coluna, int linha);
 	
@@ -58,8 +60,8 @@ public abstract class Peca {
 		return this.nome;
 	}
 	
-	public void getPosicao() {
-		System.out.println("Coluna: " + this.posicaoColuna + " Linha: " + this.posicaoLinha);
+	public String getPosicao() {
+		return "Coluna: " + this.posicaoColuna + " Linha: " + this.posicaoLinha;
 	}
 
 	public boolean[][] getPodeMover() {
@@ -89,6 +91,45 @@ public abstract class Peca {
 	public void setVerificaDestino(boolean[][] verificaDestino) {
 		this.verificaDestino = verificaDestino;
 	}
+	
+	public void setEnPassantDireita(boolean enPassant) {
+	}
+
+
+
+	public void setEnPassantEsquerda(boolean enPassantEsquerda) {
+	}
+
+	public int getPosicaoColuna() {
+		return posicaoColuna;
+	}
+
+	public void setPosicaoColuna(int posicaoColuna) {
+		this.posicaoColuna = posicaoColuna;
+	}
+
+	public int getPosicaoLinha() {
+		return posicaoLinha;
+	}
+
+	public void setPosicaoLinha(int posicaoLinha) {
+		this.posicaoLinha = posicaoLinha;
+	}
+
+	public boolean isEnPassantDireita() {
+		return enPassantDireita;
+	}
+
+	public boolean isEnPassantEsquerda() {
+		return enPassantEsquerda;
+	}
+	
+	public void resetEnPassant() {
+
+	}
+	
+	
+	
 	
 	
 }
