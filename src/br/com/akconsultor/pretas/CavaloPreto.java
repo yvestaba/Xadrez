@@ -172,6 +172,7 @@ public class CavaloPreto extends PecaPreta{
 	public CavaloPreto() {
 
 		casaInicial();
+		Tabuleiro.listaPretas.add(this);
 
 	}
 

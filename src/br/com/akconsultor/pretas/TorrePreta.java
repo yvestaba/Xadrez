@@ -116,6 +116,7 @@ public class TorrePreta extends PecaPreta{
 	public TorrePreta() {
 
 		casaInicial();
+		Tabuleiro.listaPretas.add(this);
 
 	}
 

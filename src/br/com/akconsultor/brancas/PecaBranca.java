@@ -24,4 +24,11 @@ public abstract class PecaBranca extends Peca{
 			System.out.println("Peça preta capturada\n");
 		}
 	}
+	
+//	public PecaBranca() {
+//
+//		casaInicial();
+//		Tabuleiro.listaBrancas.add(this);
+//
+//	}
 }

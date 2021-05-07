@@ -238,6 +238,7 @@ public class DamaPreta extends PecaPreta {
 	public DamaPreta() {
 
 		casaInicial();
+		Tabuleiro.listaPretas.add(this);
 
 	}
 

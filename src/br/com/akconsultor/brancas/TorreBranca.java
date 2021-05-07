@@ -117,6 +117,7 @@ public class TorreBranca extends PecaBranca {
 	public TorreBranca() {
 
 		casaInicial();
+		Tabuleiro.listaBrancas.add(this);
 
 	}
 

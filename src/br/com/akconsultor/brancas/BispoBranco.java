@@ -167,6 +167,7 @@ public class BispoBranco extends PecaBranca {
 	public BispoBranco() {
 
 		casaInicial();
+		Tabuleiro.listaBrancas.add(this);
 
 	}
 

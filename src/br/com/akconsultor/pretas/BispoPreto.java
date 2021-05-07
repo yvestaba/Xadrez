@@ -164,6 +164,7 @@ public class BispoPreto extends PecaPreta{
 	public BispoPreto() {
 
 		casaInicial();
+		Tabuleiro.listaPretas.add(this);
 
 	}
 }

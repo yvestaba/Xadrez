@@ -236,6 +236,7 @@ public class DamaBranca extends PecaBranca {
 	public DamaBranca() {
 
 		casaInicial();
+		Tabuleiro.listaBrancas.add(this);
 
 	}
 }

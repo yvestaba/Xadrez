@@ -142,6 +142,7 @@ public class PeaoBranco extends PecaBranca{
 	public PeaoBranco() {
 
 		casaInicial();
+		Tabuleiro.listaBrancas.add(this);
 
 	}
 

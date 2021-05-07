@@ -1,14 +1,15 @@
-package br.com.akconsultor.brancas;
+package br.com.akconsultor.pretas;
 
 import br.com.akconsultor.Tabuleiro;
 
-public class ReiBranco extends PecaBranca {
-
-	private String nome = "R";
-
+public class ReiPreto extends PecaPreta{
+	
+	private String nome = "r";
+	
+	
 	@Override
 	public void casaInicial() {
-		this.setPosicao(4, 0);
+		this.setPosicao(4, 7);
 	}
 
 	@Override
@@ -118,7 +119,7 @@ public class ReiBranco extends PecaBranca {
 	public void podeCapturar() {
 		// verificando se pode capturar para a direita
 		try {
-		if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha]) {
+		if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha]) {
 			this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha] = true;
 
 		}
@@ -128,7 +129,7 @@ public class ReiBranco extends PecaBranca {
 
 		// verificando se pode capturar para a esquerda
 		try {
-		if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha]) {
+		if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha]) {
 			this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha] = true;
 
 		}
@@ -138,7 +139,7 @@ public class ReiBranco extends PecaBranca {
 
 		// verificando se pode capturar para frente
 		try {
-		if (Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha + 1]) {
+		if (Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha + 1]) {
 			this.podeCapturar[this.posicaoColuna][this.posicaoLinha + 1] = true;
 		}
 		} catch (ArrayIndexOutOfBoundsException ex) {
@@ -147,7 +148,7 @@ public class ReiBranco extends PecaBranca {
 
 		// verificando se pode capturar para trás
 		try {
-		if (Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha - 1]) {
+		if (Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha - 1]) {
 			this.podeCapturar[this.posicaoColuna][this.posicaoLinha - 1] = true;
 
 		}
@@ -159,7 +160,7 @@ public class ReiBranco extends PecaBranca {
 
 		try {
 
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha + 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha + 1]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha + 1] = true;
 
 			}
@@ -171,7 +172,7 @@ public class ReiBranco extends PecaBranca {
 
 		try {
 
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha - 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha - 1] = true;
 
 			}
@@ -182,7 +183,7 @@ public class ReiBranco extends PecaBranca {
 
 		try {
 
-			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha - 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha - 1] = true;
 
 			}
@@ -194,7 +195,7 @@ public class ReiBranco extends PecaBranca {
 
 		try {
 
-			if (Tabuleiro.temPecaPreta[this.posicaoLinha - 1][this.posicaoColuna + 1]) {
+			if (Tabuleiro.temPecaBranca[this.posicaoLinha - 1][this.posicaoColuna + 1]) {
 				this.podeCapturar[this.posicaoLinha - 1][this.posicaoColuna + 1] = true;
 
 			}
@@ -209,15 +210,16 @@ public class ReiBranco extends PecaBranca {
 	}
 	
 	public void setRei() {
-		Tabuleiro.reiBranco[0] = this.posicaoColuna;
-		Tabuleiro.reiBranco[1] = this.posicaoLinha;
+		Tabuleiro.reiPreto[0] = this.posicaoColuna;
+		Tabuleiro.reiPreto[1] = this.posicaoLinha;
 	}
 
-	public ReiBranco() {
+	public ReiPreto() {
 
 		casaInicial();
-		Tabuleiro.listaBrancas.add(this);
+		Tabuleiro.listaPretas.add(this);
 
 	}
+
 
 }

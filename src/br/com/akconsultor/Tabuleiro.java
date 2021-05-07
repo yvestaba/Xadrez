@@ -2,6 +2,8 @@ package br.com.akconsultor;
 
 
 
+import java.util.ArrayList;
+
 import br.com.akconsultor.brancas.*;
 import br.com.akconsultor.pretas.*;
 
@@ -12,6 +14,12 @@ public class Tabuleiro {
 
 	public static boolean[] checaEnPassant = new boolean[8];
 	private static int jogadas;
+	
+	public static int[] reiBranco = {4, 0};
+	public static int[] reiPreto = {4, 7};
+	
+	public static ArrayList<PecaBranca> listaBrancas = new ArrayList<PecaBranca>();
+	public static ArrayList<PecaPreta> listaPretas = new ArrayList<PecaPreta>();
 
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
 	public void comecouOJogo() {
@@ -68,6 +76,7 @@ public class Tabuleiro {
 			verTabuleiro();
 			a.getCapturou();
 			a.resetEnPassant();
+			a.setRei();
 						
 			for(int i = 0; i < 8; i++) {
 				if (Tabuleiro.layout[i][3] == "P" && Tabuleiro.layout[i][1] == " " && Tabuleiro.checaEnPassant[i]) {
@@ -120,6 +129,7 @@ public class Tabuleiro {
 			verTabuleiro();
 			a.getCapturou();
 			a.resetEnPassant();
+			a.setRei();
 			
 			for(int i = 0; i < 8; i++) {
 				if (Tabuleiro.layout[i][4] == "i" && Tabuleiro.layout[i][6] == " " && Tabuleiro.checaEnPassant[i]) {
@@ -152,6 +162,14 @@ public class Tabuleiro {
 		}
 		System.out.println();
 	}
+	
+//	public void checaPecas() {
+//		for(int i = 0; i < 8; i++) {
+//			for(int j = 0; j < 8; j++) {
+//				
+//			}
+//		}
+//	}
 
 	public void verOndeTemPecaBranca() {
 		for (int i = 7; i >= 0; i--) {

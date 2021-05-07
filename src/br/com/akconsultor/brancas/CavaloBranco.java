@@ -168,6 +168,7 @@ public class CavaloBranco extends PecaBranca {
 	public CavaloBranco() {
 
 		casaInicial();
+		Tabuleiro.listaBrancas.add(this);
 
 	}
 
