@@ -99,6 +99,9 @@ public class CavaloBranco extends PecaBranca {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha + 2]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha + 2] = true;
 			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha + 2]) {
+				this.atrapalhaRei[this.posicaoColuna + 1][this.posicaoLinha + 2] = true;
+			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
@@ -106,6 +109,9 @@ public class CavaloBranco extends PecaBranca {
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha + 2]) {
 				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha + 2] = true;
+			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha + 2]) {
+				this.atrapalhaRei[this.posicaoColuna - 1][this.posicaoLinha + 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
@@ -115,6 +121,9 @@ public class CavaloBranco extends PecaBranca {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 1][this.posicaoLinha - 2]) {
 				this.podeCapturar[this.posicaoColuna - 1][this.posicaoLinha - 2] = true;
 			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 1][this.posicaoLinha - 2]) {
+				this.atrapalhaRei[this.posicaoColuna - 1][this.posicaoLinha - 2] = true;
+			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
@@ -122,6 +131,9 @@ public class CavaloBranco extends PecaBranca {
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 1][this.posicaoLinha - 2]) {
 				this.podeCapturar[this.posicaoColuna + 1][this.posicaoLinha - 2] = true;
+			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 1][this.posicaoLinha - 2]) {
+				this.atrapalhaRei[this.posicaoColuna + 1][this.posicaoLinha - 2] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
@@ -131,6 +143,9 @@ public class CavaloBranco extends PecaBranca {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha + 1]) {
 				this.podeCapturar[this.posicaoColuna + 2][this.posicaoLinha + 1] = true;
 			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 2][this.posicaoLinha + 1]) {
+				this.atrapalhaRei[this.posicaoColuna + 2][this.posicaoLinha + 1] = true;
+			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
@@ -138,6 +153,9 @@ public class CavaloBranco extends PecaBranca {
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 2][this.posicaoLinha + 1]) {
 				this.podeCapturar[this.posicaoColuna - 2][this.posicaoLinha + 1] = true;
+			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 2][this.posicaoLinha + 1]) {
+				this.atrapalhaRei[this.posicaoColuna - 2][this.posicaoLinha + 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
@@ -147,6 +165,9 @@ public class CavaloBranco extends PecaBranca {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna - 2][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna - 2][this.posicaoLinha - 1] = true;
 			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna - 2][this.posicaoLinha - 1]) {
+				this.atrapalhaRei[this.posicaoColuna - 2][this.posicaoLinha - 1] = true;
+			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 
 		}
@@ -154,6 +175,9 @@ public class CavaloBranco extends PecaBranca {
 		try {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna + 2][this.posicaoLinha - 1]) {
 				this.podeCapturar[this.posicaoColuna + 2][this.posicaoLinha - 1] = true;
+			}
+			if (Tabuleiro.temPecaBranca[this.posicaoColuna + 2][this.posicaoLinha - 1]) {
+				this.atrapalhaRei[this.posicaoColuna + 2][this.posicaoLinha - 1] = true;
 			}
 		} catch (ArrayIndexOutOfBoundsException ex) {
 

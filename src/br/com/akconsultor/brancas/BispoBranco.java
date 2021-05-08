@@ -95,6 +95,7 @@ public class BispoBranco extends PecaBranca {
 			int j = this.posicaoLinha + (i - this.posicaoColuna);
 			try {
 			if (Tabuleiro.temPecaBranca[i + 1][j + 1]) {
+				this.atrapalhaRei[i + 1][j + 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i + 1][j + 1]) {
@@ -112,6 +113,7 @@ public class BispoBranco extends PecaBranca {
 			int j = this.posicaoLinha - (i - this.posicaoColuna);
 			try {
 			if (Tabuleiro.temPecaBranca[i + 1][j - 1]) {
+				this.atrapalhaRei[i + 1][j - 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i + 1][j - 1]) {
@@ -129,6 +131,7 @@ public class BispoBranco extends PecaBranca {
 			try {
 			int j = this.posicaoLinha - (this.posicaoColuna - i);
 			if (Tabuleiro.temPecaBranca[i - 1][j - 1]) {
+				this.atrapalhaRei[i - 1][j - 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i - 1][j - 1]) {
@@ -146,6 +149,7 @@ public class BispoBranco extends PecaBranca {
 			int j = this.posicaoLinha + (this.posicaoColuna - i);
 			try {
 			if (Tabuleiro.temPecaBranca[i - 1][j + 1]) {
+				this.atrapalhaRei[i - 1][j + 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaPreta[i - 1][j + 1]) {

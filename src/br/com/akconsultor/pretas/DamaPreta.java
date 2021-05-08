@@ -120,6 +120,7 @@ public class DamaPreta extends PecaPreta {
 		// verificando se pode capturar para a direita
 		for (int i = this.posicaoColuna; i < 7; i++) {
 			if (Tabuleiro.temPecaPreta[i + 1][this.posicaoLinha]) {
+				this.atrapalhaRei[i + 1][this.posicaoLinha] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[i + 1][this.posicaoLinha]) {
@@ -131,6 +132,7 @@ public class DamaPreta extends PecaPreta {
 		// verificando se pode capturar para a esquerda
 		for (int i = this.posicaoColuna; i > 0; i--) {
 			if (Tabuleiro.temPecaPreta[i - 1][this.posicaoLinha]) {
+				this.atrapalhaRei[i - 1][this.posicaoLinha] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[i - 1][this.posicaoLinha]) {
@@ -142,6 +144,7 @@ public class DamaPreta extends PecaPreta {
 		// verificando se pode capturar para frente
 		for (int i = this.posicaoLinha; i < 7; i++) {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna][i + 1]) {
+				this.atrapalhaRei[this.posicaoColuna][i + 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[this.posicaoColuna][i + 1]) {
@@ -153,6 +156,7 @@ public class DamaPreta extends PecaPreta {
 		// verificando se pode capturar para trás
 		for (int i = this.posicaoLinha; i > 0; i--) {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna][i - 1]) {
+				this.atrapalhaRei[this.posicaoColuna][i - 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[this.posicaoColuna][i - 1]) {
@@ -166,6 +170,7 @@ public class DamaPreta extends PecaPreta {
 			int j = this.posicaoLinha + (i - this.posicaoColuna);
 			try {
 				if (Tabuleiro.temPecaPreta[i + 1][j + 1]) {
+					this.atrapalhaRei[i + 1][j + 1] = true;
 					break;
 				}
 				if (Tabuleiro.temPecaBranca[i + 1][j + 1]) {
@@ -183,6 +188,7 @@ public class DamaPreta extends PecaPreta {
 			int j = this.posicaoLinha - (i - this.posicaoColuna);
 			try {
 				if (Tabuleiro.temPecaPreta[i + 1][j - 1]) {
+					this.atrapalhaRei[i + 1][j - 1] = true;
 					break;
 				}
 				if (Tabuleiro.temPecaBranca[i + 1][j - 1]) {
@@ -200,6 +206,7 @@ public class DamaPreta extends PecaPreta {
 			try {
 				int j = this.posicaoLinha - (this.posicaoColuna - i);
 				if (Tabuleiro.temPecaPreta[i - 1][j - 1]) {
+					this.atrapalhaRei[i - 1][j - 1] = true;
 					break;
 				}
 				if (Tabuleiro.temPecaBranca[i - 1][j - 1]) {
@@ -217,6 +224,7 @@ public class DamaPreta extends PecaPreta {
 			int j = this.posicaoLinha + (this.posicaoColuna - i);
 			try {
 				if (Tabuleiro.temPecaPreta[i - 1][j + 1]) {
+					this.atrapalhaRei[i - 1][j + 1] = true;
 					break;
 				}
 				if (Tabuleiro.temPecaBranca[i - 1][j + 1]) {

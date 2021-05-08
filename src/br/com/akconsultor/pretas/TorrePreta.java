@@ -66,6 +66,7 @@ public class TorrePreta extends PecaPreta{
 		// verificando se pode capturar para a direita
 		for (int i = this.posicaoColuna; i < 7; i++) {
 			if (Tabuleiro.temPecaPreta[i + 1][this.posicaoLinha]) {
+				this.atrapalhaRei[i + 1][this.posicaoLinha] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[i + 1][this.posicaoLinha]) {
@@ -77,6 +78,7 @@ public class TorrePreta extends PecaPreta{
 		// verificando se pode capturar para a esquerda
 		for (int i = this.posicaoColuna; i > 0; i--) {
 			if (Tabuleiro.temPecaPreta[i - 1][this.posicaoLinha]) {
+				this.atrapalhaRei[i - 1][this.posicaoLinha] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[i - 1][this.posicaoLinha]) {
@@ -88,6 +90,7 @@ public class TorrePreta extends PecaPreta{
 		// verificando se pode capturar para frente
 		for (int i = this.posicaoLinha; i < 7; i++) {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna][i + 1]) {
+				this.atrapalhaRei[this.posicaoColuna][i + 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[this.posicaoColuna][i + 1]) {
@@ -99,6 +102,7 @@ public class TorrePreta extends PecaPreta{
 		// verificando se pode capturar para trás
 		for (int i = this.posicaoLinha; i > 0; i--) {
 			if (Tabuleiro.temPecaPreta[this.posicaoColuna][i - 1]) {
+				this.atrapalhaRei[this.posicaoColuna][i - 1] = true;
 				break;
 			}
 			if (Tabuleiro.temPecaBranca[this.posicaoColuna][i - 1]) {

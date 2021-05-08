@@ -4,7 +4,9 @@ public abstract class Peca {
 	protected int posicaoColuna;
 	protected int posicaoLinha;
 	protected String nome;
-	protected boolean[][] verificaDestino = new boolean[8][8];
+	public boolean[][] verificaDestino = new boolean[8][8];
+	//logo abaixo a variavel que falta para impedir que o rei capture peças de maneiro que se mova ilegalmente
+	public boolean[][] atrapalhaRei = new boolean[8][8];
 	protected boolean[][] podeMover = new boolean[8][8];
 	protected boolean[][] podeCapturar = new boolean[8][8];
 	protected boolean[][] podeMoverOuCapturar = new boolean[8][8];
@@ -135,6 +137,14 @@ public abstract class Peca {
 	
 	public void protegeRei() {
 		
+	}
+	
+	public void resetAtrapalhaRei() {
+		for (int i = 0; i < 8; i++) {
+			for(int j = 0; j < 8; j++) {
+				this.atrapalhaRei[i][j] = false;
+			}
+		}
 	}
 	
 	

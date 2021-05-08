@@ -40,7 +40,7 @@ public class PeaoBranco extends PecaBranca{
 		// se não está na casa inicial, não se considera que pode andar 2 espaços, mas
 		// ainda verifica se tem peça no caminho
 		else if (Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha + 1] == false
-				|| Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha + 1] == false) {
+				&& Tabuleiro.temPecaBranca[this.posicaoColuna][this.posicaoLinha + 1] == false) {
 			this.podeMover[this.posicaoColuna][this.posicaoLinha + 1] = true;
 		}
 
