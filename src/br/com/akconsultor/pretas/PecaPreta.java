@@ -65,7 +65,7 @@ public abstract class PecaPreta extends Peca {
 			} else if (Tabuleiro.getDirecaoCheck() == Direcao.VERTICAL) {
 				for (int i = 0; i < 8; i++) {
 					for (int j = 0; j < 8; j++) {
-						if (i == Tabuleiro.getLinhaCheck()) {
+						if (i == Tabuleiro.getColunaCheck()) {
 							if (Tabuleiro.reiPreto[1] < Tabuleiro.getLinhaCheck() && j <= Tabuleiro.getLinhaCheck()
 									&& j > Tabuleiro.reiPreto[1]) {
 
@@ -399,5 +399,31 @@ public abstract class PecaPreta extends Peca {
 
 			}
 		}
+	}
+	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
+		ondePodeAndar();
+		podeCapturar();
+		podeAndarOuCapturar();
+		protegeRei();
+		if (Tabuleiro.isCheck() && Tabuleiro.isVezDosBrancos() == false) {
+			this.resolveCheck();
+		}
+		for (int i = 7; i >= 0; i--) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+			}
+			System.out.println();
+		} System.out.println();
+
 	}
 }

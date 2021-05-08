@@ -1,18 +1,21 @@
 package br.com.akconsultor.brancas;
 
 import br.com.akconsultor.Tabuleiro;
-
-public class TorreBranca extends PecaBranca {
+import br.com.akconsultor.Rocker;
+public class TorreBranca extends PecaBranca implements Rocker{
 
 	private String nome = "T";
+	private int colunaInicial;
 
 
 	@Override
 	public void casaInicial() {
 		if (Tabuleiro.temPecaBranca[0][0] == false) {
 			this.setPosicao(0, 0);
+			this.colunaInicial = 0;
 		} else {
 			this.setPosicao(7, 0);
+			this.colunaInicial = 7;
 		}
 
 	}
@@ -122,6 +125,45 @@ public class TorreBranca extends PecaBranca {
 
 		casaInicial();
 		Tabuleiro.listaBrancas.add(this);
+
+	}
+
+	@Override
+	public void verificaRoque() {
+		if ((this.posicaoColuna != 0 || this.posicaoLinha != 0) && this.colunaInicial == 0) {
+			Tabuleiro.setBrancoPodeRoqueGrande(false);
+		}
+		if ((this.posicaoColuna != 7 || this.posicaoLinha != 0) && this.colunaInicial == 7) {
+			Tabuleiro.setBrancoPodeRoquePequeno(false);
+		}
+		
+	}
+	
+	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
+		ondePodeAndar();
+		podeCapturar();
+		podeAndarOuCapturar();
+		verificaRoque();
+		protegeRei();
+		if (Tabuleiro.isCheck() && Tabuleiro.isVezDosBrancos()) {
+			this.resolveCheck();
+		}
+		for (int i = 7; i >= 0; i--) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+			}
+			System.out.println();
+		} System.out.println();
 
 	}
 

@@ -1,9 +1,10 @@
 package br.com.akconsultor.brancas;
 
 import br.com.akconsultor.Tabuleiro;
-import br.com.akconsultor.pretas.*;
 
-public class ReiBranco extends PecaBranca {
+import br.com.akconsultor.pretas.*;
+import br.com.akconsultor.Rocker;
+public class ReiBranco extends PecaBranca implements Rocker{
 
 	private String nome = "R";
 
@@ -262,12 +263,55 @@ public class ReiBranco extends PecaBranca {
 			}
 		}
 	}
+	
+	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
+		ondePodeAndar();
+		podeCapturar();
+		podeAndarOuCapturar();
+		verificaRoque();
+		protegeRei();
+		for (int i = 7; i >= 0; i--) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+			}
+			System.out.println();
+		} System.out.println();
+
+	}
 
 	public ReiBranco() {
 
 		casaInicial();
 		Tabuleiro.listaBrancas.add(this);
 
+	}
+
+	@Override
+	public void verificaRoque() {
+		if (this.posicaoColuna != 4 || this.posicaoLinha != 0) {
+			Tabuleiro.setBrancoPodeRoqueGrande(false);
+			Tabuleiro.setBrancoPodeRoquePequeno(false);
+		} else if (this.posicaoColuna == 4 && this.posicaoLinha == 0 && Tabuleiro.isCheck() == false
+				&& Tabuleiro.isVezDosBrancos() && this.verificaDestino[3][0]
+				&& Tabuleiro.isBrancoPodeRoqueGrande() && Tabuleiro.temPecaBranca[2][0] == false && Tabuleiro.temPecaPreta[2][0] == false) {
+			this.verificaDestino[2][0] = true;
+		}
+
+		if (this.posicaoColuna == 4 && this.posicaoLinha == 0 && Tabuleiro.isCheck() == false
+				&& Tabuleiro.isVezDosBrancos() && this.verificaDestino[5][0]
+				&& Tabuleiro.isBrancoPodeRoquePequeno() && Tabuleiro.temPecaBranca[6][0] == false && Tabuleiro.temPecaPreta[6][0] == false) {
+			this.verificaDestino[6][0] = true;
+		}
 	}
 
 }

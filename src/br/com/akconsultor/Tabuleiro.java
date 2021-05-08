@@ -25,7 +25,12 @@ public class Tabuleiro {
 	private static int linhaCheck;
 	private static int quantasPecasFazemCheck;
 	private static Direcao direcaoCheck;
-	
+	private static boolean brancoPodeRoquePequeno = true;
+	private static boolean brancoPodeRoqueGrande = true;
+
+	private static boolean pretoPodeRoquePequeno = true;
+	private static boolean pretoPodeRoqueGrande = true;
+
 
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
 	public void comecouOJogo() {
@@ -62,9 +67,30 @@ public class Tabuleiro {
 				}
 
 				int colunaAnterior = a.getPosicaoColuna();
+				int linhaAnterior = a.getPosicaoLinha();
 
 				a.desfazPosicao();
 				a.setPosicao(colunaDestino, linhaDestino);
+
+				if (colunaAnterior == 4 && linhaAnterior == 0 && isBrancoPodeRoqueGrande() && colunaDestino == 2
+						&& linhaDestino == 0) {
+					for (PecaBranca peca : listaBrancas) {
+						if(peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 0) {
+							peca.desfazPosicao();
+							peca.setPosicao(3, 0);
+							peca.resetAtrapalhaRei();
+						}
+					}
+				} else if (colunaAnterior == 4 && linhaAnterior == 0 && isBrancoPodeRoquePequeno() && colunaDestino == 6
+						&& linhaDestino == 0) {
+					for (PecaBranca peca : listaBrancas) {
+						if(peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 0) {
+							peca.desfazPosicao();
+							peca.setPosicao(5, 0);
+							peca.resetAtrapalhaRei();
+						}
+					}
+				}
 
 				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 5) {
 					Tabuleiro.layout[a.getPosicaoColuna()][4] = " ";
@@ -101,6 +127,7 @@ public class Tabuleiro {
 					}
 				}
 				check = false;
+				quantasPecasFazemCheck = 0;
 				vezDosBrancos = false;
 				verificaCheckBrancas();
 				verTabuleiro();
@@ -127,9 +154,30 @@ public class Tabuleiro {
 				}
 
 				int colunaAnterior = a.getPosicaoColuna();
+				int linhaAnterior = a.getPosicaoLinha();
 
 				a.desfazPosicao();
 				a.setPosicao(colunaDestino, linhaDestino);
+				
+				if (colunaAnterior == 4 && linhaAnterior == 7 && isPretoPodeRoqueGrande() && colunaDestino == 2
+						&& linhaDestino == 7) {
+					for (PecaPreta peca : listaPretas) {
+						if(peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 7) {
+							peca.desfazPosicao();
+							peca.setPosicao(3, 7);
+							peca.resetAtrapalhaRei();
+						}
+					}
+				} else if (colunaAnterior == 4 && linhaAnterior == 7 && isPretoPodeRoquePequeno() && colunaDestino == 6
+						&& linhaDestino == 7) {
+					for (PecaBranca peca : listaBrancas) {
+						if(peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 7) {
+							peca.desfazPosicao();
+							peca.setPosicao(5, 7);
+							peca.resetAtrapalhaRei();
+						}
+					}
+				}
 
 				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 2) {
 					Tabuleiro.layout[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = " ";
@@ -167,9 +215,11 @@ public class Tabuleiro {
 				}
 
 				check = false;
+				quantasPecasFazemCheck = 0;
+				vezDosBrancos = true;
+				verificaCheckPretas();
 				verTabuleiro();
 				jogadas++;
-				vezDosBrancos = true;
 
 			} else {
 				System.out.println("Essa peça não pode mover assim");
@@ -280,8 +330,7 @@ public class Tabuleiro {
 							if (peca.verificaDestino[i][j]) {
 								contaCheckMate--;
 								break;
-							}
-							else if(i == 7 && j == 7) {
+							} else if (i == 7 && j == 7) {
 								contaCheckMate++;
 							}
 						}
@@ -289,13 +338,105 @@ public class Tabuleiro {
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					contaCheckMate++;
 				}
-			} if (contaCheckMate == 16) {
+			}
+			if (contaCheckMate == 16) {
 				System.out.println("CheckMate!");
 			} else {
 				System.out.println("Check!");
 			}
 		}
 
+	}
+
+	private void verificaCheckPretas() {
+		for (PecaPreta peca : listaPretas) {
+			try {
+				peca.getVerificaDestino();
+				int i = reiBranco[0];
+				int j = reiBranco[1];
+				if (peca.verificaDestino[i][j]) {
+					check = true;
+
+					colunaCheck = peca.getPosicaoColuna();
+					linhaCheck = peca.getPosicaoLinha();
+					quantasPecasFazemCheck++;
+					if (quantasPecasFazemCheck > 1) {
+						break;
+					}
+					if (reiBranco[0] - colunaCheck == reiBranco[1] - linhaCheck) {
+						direcaoCheck = Direcao.DIAGONALHORARIO;
+					} else if (reiBranco[0] - colunaCheck == -1 * (reiBranco[1] - linhaCheck)) {
+						direcaoCheck = Direcao.DIAGONALANTIHORARIO;
+					} else if (reiBranco[0] == colunaCheck) {
+						direcaoCheck = Direcao.VERTICAL;
+					} else if (reiBranco[1] == linhaCheck) {
+						direcaoCheck = Direcao.HORIZONTAL;
+					} else {
+						direcaoCheck = Direcao.ELE;
+					}
+				}
+
+			} catch (ArrayIndexOutOfBoundsException ex) {
+			}
+		}
+		if (check) {
+			int contaCheckMate = 0;
+			for (PecaBranca peca : listaBrancas) {
+				try {
+					peca.getVerificaDestino();
+					for (int i = 0; i < 8; i++) {
+						for (int j = 0; j < 8; j++) {
+							if (peca.verificaDestino[i][j]) {
+								contaCheckMate--;
+								break;
+							} else if (i == 7 && j == 7) {
+								contaCheckMate++;
+							}
+						}
+					}
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					contaCheckMate++;
+				}
+			}
+			if (contaCheckMate == 16) {
+				System.out.println("CheckMate!");
+			} else {
+				System.out.println("Check!");
+			}
+		}
+
+	}
+
+	public static boolean isBrancoPodeRoquePequeno() {
+		return brancoPodeRoquePequeno;
+	}
+
+	public static void setBrancoPodeRoquePequeno(boolean brancoPodeRoquePequeno) {
+		Tabuleiro.brancoPodeRoquePequeno = brancoPodeRoquePequeno;
+	}
+
+	public static boolean isBrancoPodeRoqueGrande() {
+		return brancoPodeRoqueGrande;
+	}
+
+	public static void setBrancoPodeRoqueGrande(boolean brancoPodeRoqueGrande) {
+		Tabuleiro.brancoPodeRoqueGrande = brancoPodeRoqueGrande;
+	}
+
+	public static boolean isPretoPodeRoquePequeno() {
+		return pretoPodeRoquePequeno;
+	}
+
+	public static void setPretoPodeRoquePequeno(boolean pretoPodeRoquePequeno) {
+		Tabuleiro.pretoPodeRoquePequeno = pretoPodeRoquePequeno;
+	}
+
+	public static boolean isPretoPodeRoqueGrande() {
+		return pretoPodeRoqueGrande;
+	}
+
+	public static void setPretoPodeRoqueGrande(boolean pretoPodeRoqueGrande) {
+		Tabuleiro.pretoPodeRoqueGrande = pretoPodeRoqueGrande;
 	}
 
 }

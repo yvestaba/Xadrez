@@ -1,5 +1,6 @@
 package br.com.akconsultor.brancas;
 
+import br.com.akconsultor.Direcao;
 import br.com.akconsultor.Peca;
 import br.com.akconsultor.Tabuleiro;
 
@@ -22,6 +23,100 @@ public abstract class PecaBranca extends Peca{
 		if(this.podeCapturar[this.posicaoColuna][this.posicaoLinha]) {
 			Tabuleiro.temPecaPreta[this.posicaoColuna][this.posicaoLinha] = false;
 			System.out.println("Peça preta capturada\n");
+		}
+	}
+	
+	public void resolveCheck() {
+		if (Tabuleiro.getQuantasPecasFazemCheck() > 1) {
+			for (int i = 0; i < 8; i++) {
+				for (int j = 0; j < 8; j++) {
+
+					this.verificaDestino[i][j] = false;
+
+				}
+			}
+		} else {
+			if (Tabuleiro.getDirecaoCheck() == Direcao.ELE) {
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (i == Tabuleiro.getColunaCheck() && j == Tabuleiro.getLinhaCheck()) {
+
+						} else {
+							this.verificaDestino[i][j] = false;
+						}
+					}
+				}
+			} else if (Tabuleiro.getDirecaoCheck() == Direcao.HORIZONTAL) {
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (j == Tabuleiro.getLinhaCheck()) {
+							if (Tabuleiro.reiBranco[0] < Tabuleiro.getColunaCheck() && i <= Tabuleiro.getColunaCheck()
+									&& i > Tabuleiro.reiBranco[0]) {
+
+							} else if (Tabuleiro.reiBranco[0] > Tabuleiro.getColunaCheck()
+									&& i >= Tabuleiro.getColunaCheck() && i < Tabuleiro.reiBranco[0]) {
+
+							} else {
+								this.verificaDestino[i][j] = false;
+							}
+						} else {
+							this.verificaDestino[i][j] = false;
+						}
+					}
+				}
+			} else if (Tabuleiro.getDirecaoCheck() == Direcao.VERTICAL) {
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (i == Tabuleiro.getColunaCheck()) {
+							if (Tabuleiro.reiBranco[1] < Tabuleiro.getLinhaCheck() && j <= Tabuleiro.getLinhaCheck()
+									&& j > Tabuleiro.reiBranco[1]) {
+
+							} else if (Tabuleiro.reiBranco[1] > Tabuleiro.getLinhaCheck()
+									&& j >= Tabuleiro.getLinhaCheck() && j < Tabuleiro.reiBranco[1]) {
+
+							} else {
+								this.verificaDestino[i][j] = false;
+							}
+						} else {
+							this.verificaDestino[i][j] = false;
+						}
+					}
+				}
+			} else if (Tabuleiro.getDirecaoCheck() == Direcao.DIAGONALHORARIO) {
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (Tabuleiro.reiBranco[0] < Tabuleiro.getColunaCheck()
+								&& i - Tabuleiro.getColunaCheck() == j - Tabuleiro.getLinhaCheck()
+								&& i > Tabuleiro.reiBranco[0] && i <= Tabuleiro.getColunaCheck()) {
+
+						} else if (Tabuleiro.reiBranco[0] > Tabuleiro.getColunaCheck()
+								&& i - Tabuleiro.getColunaCheck() == j - Tabuleiro.getLinhaCheck()
+								&& i < Tabuleiro.reiBranco[0] && i >= Tabuleiro.getColunaCheck()) {
+
+						} else {
+
+							this.verificaDestino[i][j] = false;
+						}
+					}
+				}
+			} else if (Tabuleiro.getDirecaoCheck() == Direcao.DIAGONALANTIHORARIO) {
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (Tabuleiro.reiBranco[0] < Tabuleiro.getColunaCheck()
+								&& i - Tabuleiro.getColunaCheck() == -1 * (j - Tabuleiro.getLinhaCheck())
+								&& i > Tabuleiro.reiBranco[0] && i <= Tabuleiro.getColunaCheck()) {
+
+						} else if (Tabuleiro.reiBranco[0] > Tabuleiro.getColunaCheck()
+								&& i - Tabuleiro.getColunaCheck() == -1 * (j - Tabuleiro.getLinhaCheck())
+								&& i < Tabuleiro.reiBranco[0] && i >= Tabuleiro.getColunaCheck()) {
+
+						} else {
+
+							this.verificaDestino[i][j] = false;
+						}
+					}
+				}
+			}
 		}
 	}
 	
@@ -305,6 +400,33 @@ public abstract class PecaBranca extends Peca{
 
 		}
 		}
+	}
+	
+	public void getVerificaDestino() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+					
+					this.verificaDestino[i][j] = false;
+					this.podeMover[i][j] = false;
+					this.podeCapturar[i][j] = false;
+					this.podeMoverOuCapturar[i][j] = false;
+				
+			}
+		}
+		ondePodeAndar();
+		podeCapturar();
+		podeAndarOuCapturar();
+		protegeRei();
+		if (Tabuleiro.isCheck() && Tabuleiro.isVezDosBrancos()) {
+			this.resolveCheck();
+		}
+		for (int i = 7; i >= 0; i--) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+			}
+			System.out.println();
+		} System.out.println();
+
 	}
 
 }

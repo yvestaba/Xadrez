@@ -78,15 +78,70 @@ public class TestaJogo {
 		tabuleiro.movePecaBranca(damaB, 7, 4);
 		
 		t1.getVerificaDestino();
+		tabuleiro.movePecaPreta(t1, 7, 4);
 		
-
-	
+		bispo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo2, 4, 1);
 		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 2, 4);
 		
+		bispo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo2, 7, 4);
 		
+		p2.getVerificaDestino();
+		tabuleiro.movePecaPreta(p2, 6, 5);
 		
+		peao2.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao2, 1, 3);
 		
-
+		p5.getVerificaDestino();
+		tabuleiro.movePecaPreta(p5, 3, 4);
+		
+		bispo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo2, 6, 5);
+		
+		reiP.getVerificaDestino();
+		tabuleiro.movePecaPreta(reiP, 3, 6);
+		
+		peao5.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao5, 5, 5);
+		
+		p4.getVerificaDestino();
+		tabuleiro.movePecaPreta(p4, 5, 5);
+		
+		cavalo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo1, 2, 2);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 4, 7);
+		
+		cavalo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo1, 4, 1);
+		
+		reiP.getVerificaDestino();
+		tabuleiro.movePecaPreta(reiP, 2, 6);
+		
+		peao1.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao1, 0, 2);
+		
+		b2.getVerificaDestino();
+		tabuleiro.movePecaPreta(b2, 6, 3);
+		
+		cavalo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo2, 5, 2);
+		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 1, 3);
+		
+		bispo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo1, 1, 1);
+		
+		c2.getVerificaDestino();
+		tabuleiro.movePecaPreta(c2, 2, 5);
+		
+		reiB.getVerificaDestino();
+		tabuleiro.movePecaBranca(reiB, 2, 0);
 	}
 
 }

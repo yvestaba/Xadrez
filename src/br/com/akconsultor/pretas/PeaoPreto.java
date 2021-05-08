@@ -122,7 +122,7 @@ public class PeaoPreto extends PecaPreta{
 		setEnPassantDireita(true);
 		setEnPassantEsquerda(true);
 		protegeRei();
-		if (Tabuleiro.isCheck()) {
+		if (Tabuleiro.isCheck() && Tabuleiro.isVezDosBrancos() == false) {
 			this.resolveCheck();
 		}
 		for (int i = 7; i >= 0; i--) {

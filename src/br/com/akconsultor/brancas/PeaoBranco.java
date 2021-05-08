@@ -121,6 +121,9 @@ public class PeaoBranco extends PecaBranca{
 		podeAndarOuCapturar();
 		setEnPassantDireita(true);
 		setEnPassantEsquerda(true);
+		if (Tabuleiro.isCheck() && Tabuleiro.isVezDosBrancos()) {
+			this.resolveCheck();
+		}
 		for (int i = 7; i >= 0; i--) {
 			for (int j = 0; j < 8; j++) {
 				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
