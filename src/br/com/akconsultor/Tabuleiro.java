@@ -20,6 +20,12 @@ public class Tabuleiro {
 	public static ArrayList<PecaPreta> listaPretas = new ArrayList<PecaPreta>();
 
 	private static boolean vezDosBrancos = true;
+	private static boolean check = false;
+	private static int colunaCheck;
+	private static int linhaCheck;
+	private static int quantasPecasFazemCheck;
+	private static Direcao direcaoCheck;
+	
 
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
 	public void comecouOJogo() {
@@ -71,7 +77,7 @@ public class Tabuleiro {
 					Tabuleiro.temPecaPreta[a.getPosicaoColuna()][a.getPosicaoLinha() - 1] = false;
 					System.out.println("enPassant");
 				}
-				verTabuleiro();
+
 				a.getCapturou();
 				a.resetEnPassant();
 				a.resetAtrapalhaRei();
@@ -94,9 +100,12 @@ public class Tabuleiro {
 					} catch (ArrayIndexOutOfBoundsException ex) {
 					}
 				}
+				check = false;
+				vezDosBrancos = false;
+				verificaCheckBrancas();
+				verTabuleiro();
 
 				jogadas++;
-				vezDosBrancos = false;
 			} else {
 				System.out.println("Essa peça não pode mover assim");
 			}
@@ -133,7 +142,7 @@ public class Tabuleiro {
 					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = false;
 					System.out.println("en Passant");
 				}
-				verTabuleiro();
+
 				a.getCapturou();
 				a.resetEnPassant();
 				a.resetAtrapalhaRei();
@@ -157,6 +166,8 @@ public class Tabuleiro {
 					}
 				}
 
+				check = false;
+				verTabuleiro();
 				jogadas++;
 				vezDosBrancos = true;
 
@@ -167,6 +178,26 @@ public class Tabuleiro {
 			System.out.println("Não é a vez dos pretos");
 		}
 
+	}
+
+	public static boolean isCheck() {
+		return check;
+	}
+
+	public static int getColunaCheck() {
+		return colunaCheck;
+	}
+
+	public static int getLinhaCheck() {
+		return linhaCheck;
+	}
+
+	public static int getQuantasPecasFazemCheck() {
+		return quantasPecasFazemCheck;
+	}
+
+	public static Direcao getDirecaoCheck() {
+		return direcaoCheck;
 	}
 
 	public void verTabuleiro() {
@@ -205,6 +236,66 @@ public class Tabuleiro {
 
 	public static boolean isVezDosBrancos() {
 		return vezDosBrancos;
+	}
+
+	private void verificaCheckBrancas() {
+		for (PecaBranca peca : listaBrancas) {
+			try {
+				peca.getVerificaDestino();
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++) {
+						if (peca.verificaDestino[i][j] == true && reiPreto[0] == i && reiPreto[1] == j) {
+							check = true;
+
+							colunaCheck = peca.getPosicaoColuna();
+							linhaCheck = peca.getPosicaoLinha();
+							quantasPecasFazemCheck++;
+							if (quantasPecasFazemCheck > 1) {
+								break;
+							}
+							if (reiPreto[0] - colunaCheck == reiPreto[1] - linhaCheck) {
+								direcaoCheck = Direcao.DIAGONALHORARIO;
+							} else if (reiPreto[0] - colunaCheck == -1 * (reiPreto[1] - linhaCheck)) {
+								direcaoCheck = Direcao.DIAGONALANTIHORARIO;
+							} else if (reiPreto[0] == colunaCheck) {
+								direcaoCheck = Direcao.VERTICAL;
+							} else if (reiPreto[1] == linhaCheck) {
+								direcaoCheck = Direcao.HORIZONTAL;
+							} else {
+								direcaoCheck = Direcao.ELE;
+							}
+						}
+					}
+				}
+			} catch (ArrayIndexOutOfBoundsException ex) {
+			}
+		}
+		if (check) {
+			int contaCheckMate = 0;
+			for (PecaPreta peca : listaPretas) {
+				try {
+					peca.getVerificaDestino();
+					for (int i = 0; i < 8; i++) {
+						for (int j = 0; j < 8; j++) {
+							if (peca.verificaDestino[i][j]) {
+								contaCheckMate--;
+								break;
+							}
+							else if(i == 7 && j == 7) {
+								contaCheckMate++;
+							}
+						}
+					}
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					contaCheckMate++;
+				}
+			} if (contaCheckMate == 16) {
+				System.out.println("CheckMate!");
+			} else {
+				System.out.println("Check!");
+			}
+		}
+
 	}
 
 }

@@ -65,8 +65,22 @@ public class TestaJogo {
 		peao5.getVerificaDestino();
 		tabuleiro.movePecaBranca(peao5, 4, 3);
 		
-		p4.getVerificaDestino();
-		tabuleiro.movePecaPreta(p4, 4, 4);
+		p3.getVerificaDestino();
+		tabuleiro.movePecaPreta(p3, 5, 4);
+		
+		peao5.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao5, 5, 4);
+		
+		p1.getVerificaDestino();
+		tabuleiro.movePecaPreta(p1, 7, 4);
+		
+		damaB.getVerificaDestino();
+		tabuleiro.movePecaBranca(damaB, 7, 4);
+		
+		t1.getVerificaDestino();
+		
+
+	
 		
 		
 		
