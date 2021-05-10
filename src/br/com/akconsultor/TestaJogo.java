@@ -6,7 +6,23 @@ import br.com.akconsultor.brancas.*;
 import br.com.akconsultor.pretas.*;
 
 public class TestaJogo {
+	public static void promovePeaoDamaBranca(PecaBranca peaoBranco) {
+		if(peaoBranco.getPosicaoLinha() == 7) {
+			
+			DamaBranca damaB2 = new DamaBranca(peaoBranco.getPosicaoColuna(), 7);
+			peaoBranco.setPosicaoLinha(50);
+			peaoBranco.setPosicaoColuna(50);
+		}
+	}
 	
+	public static void promovePeaoDamaPreta(PecaPreta peaoPreto) {
+		if(peaoPreto.getPosicaoLinha() == 0) {
+			
+			DamaPreta damaP2 = new DamaPreta(peaoPreto.getPosicaoColuna(), 0);
+			peaoPreto.setPosicaoLinha(50);
+			peaoPreto.setPosicaoColuna(50);
+		}
+	}
 	
 	
 	public static void main(String[] args) {
@@ -148,6 +164,26 @@ public class TestaJogo {
 		
 		reiB.getVerificaDestino();
 		tabuleiro.movePecaBranca(reiB, 2, 0);
+		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 0, 2);
+		
+		bispo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo1, 2, 2);
+		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 0, 1);
+		
+		bispo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo1, 3, 3);
+		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 0, 0);
+		
+		DamaPreta damaPPromovida = Tabuleiro.getRainhaPretaPromovida();
+		
+		damaPPromovida.getVerificaDestino();
+		
 	}
 
 }

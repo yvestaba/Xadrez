@@ -31,6 +31,10 @@ public class Tabuleiro {
 	private static boolean pretoPodeRoquePequeno = true;
 	private static boolean pretoPodeRoqueGrande = true;
 
+	private static boolean checkMate = true;
+	private static DamaPreta rainhaPretaPromovida;
+	private static DamaBranca rainhaBrancaPromovida;
+
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
 	public void comecouOJogo() {
 		for (int i = 0; i < 8; i++) {
@@ -304,6 +308,9 @@ public class Tabuleiro {
 
 	private void verificaCheckBrancas() {
 		for (PecaBranca peca : listaBrancas) {
+			if (peca.getPosicaoLinha() == 7 && peca.getNome() == "P") {
+				TestaJogo.promovePeaoDamaBranca(peca);
+			}
 			try {
 				peca.getVerificaDestino();
 				for (int i = 0; i < 8; i++) {
@@ -334,36 +341,43 @@ public class Tabuleiro {
 			} catch (ArrayIndexOutOfBoundsException ex) {
 			}
 		}
+		if (rainhaBrancaPromovida != null && listaBrancas.contains(rainhaBrancaPromovida) == false) {
+			listaBrancas.add(rainhaBrancaPromovida);
+		}
 		if (check) {
-			int contaCheckMate = 0;
 			for (PecaPreta peca : listaPretas) {
 				try {
 					peca.getVerificaDestino();
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j < 8; j++) {
 							if (peca.verificaDestino[i][j]) {
-								contaCheckMate--;
+								Tabuleiro.checkMate = false;
+								
 								break;
-							} else if (i == 7 && j == 7) {
-								contaCheckMate++;
 							}
 						}
 					}
 				} catch (ArrayIndexOutOfBoundsException ex) {
-					contaCheckMate++;
+
 				}
 			}
-			if (contaCheckMate == 16) {
-				System.out.println("CheckMate!");
-			} else {
-				System.out.println("Check!");
-			}
 		}
+
+		if (Tabuleiro.checkMate) {
+			System.out.println("Check Mate!");
+		} else {
+			System.out.println("Check!");
+			Tabuleiro.checkMate = true;
+		}
+	
 
 	}
 
 	private void verificaCheckPretas() {
 		for (PecaPreta peca : listaPretas) {
+			if (peca.getPosicaoLinha() == 0 && peca.getNome() == "i") {
+				TestaJogo.promovePeaoDamaPreta(peca);
+			}
 			try {
 				peca.getVerificaDestino();
 				int i = reiBranco[0];
@@ -393,30 +407,35 @@ public class Tabuleiro {
 			} catch (ArrayIndexOutOfBoundsException ex) {
 			}
 		}
+
+		if (rainhaPretaPromovida != null && listaPretas.contains(rainhaPretaPromovida) == false) {
+			listaPretas.add(rainhaPretaPromovida);
+		}
+
 		if (check) {
-			int contaCheckMate = 0;
 			for (PecaBranca peca : listaBrancas) {
 				try {
 					peca.getVerificaDestino();
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j < 8; j++) {
 							if (peca.verificaDestino[i][j]) {
-								contaCheckMate--;
+								Tabuleiro.checkMate = false;
+								
 								break;
-							} else if (i == 7 && j == 7) {
-								contaCheckMate++;
 							}
 						}
 					}
 				} catch (ArrayIndexOutOfBoundsException ex) {
-					contaCheckMate++;
+
 				}
 			}
-			if (contaCheckMate == 16) {
-				System.out.println("CheckMate!");
-			} else {
-				System.out.println("Check!");
-			}
+		}
+
+		if (Tabuleiro.checkMate) {
+			System.out.println("Check Mate!");
+		} else {
+			System.out.println("Check!");
+			Tabuleiro.checkMate = true;
 		}
 
 	}
@@ -451,6 +470,42 @@ public class Tabuleiro {
 
 	public static void setPretoPodeRoqueGrande(boolean pretoPodeRoqueGrande) {
 		Tabuleiro.pretoPodeRoqueGrande = pretoPodeRoqueGrande;
+	}
+
+	public static void setCheck(boolean check) {
+		Tabuleiro.check = check;
+	}
+
+	public static void setColunaCheck(int colunaCheck) {
+		Tabuleiro.colunaCheck = colunaCheck;
+	}
+
+	public static void setLinhaCheck(int linhaCheck) {
+		Tabuleiro.linhaCheck = linhaCheck;
+	}
+
+	public static void setQuantasPecasFazemCheck(int quantasPecasFazemCheck) {
+		Tabuleiro.quantasPecasFazemCheck = quantasPecasFazemCheck;
+	}
+
+	public static void setDirecaoCheck(Direcao direcaoCheck) {
+		Tabuleiro.direcaoCheck = direcaoCheck;
+	}
+
+	public static void setRainhaPretaPromovida(DamaPreta rainhaPretaPromovida) {
+		Tabuleiro.rainhaPretaPromovida = rainhaPretaPromovida;
+	}
+
+	public static void setRainhaBrancaPromovida(DamaBranca rainhaBrancaPromovida) {
+		Tabuleiro.rainhaBrancaPromovida = rainhaBrancaPromovida;
+	}
+
+	public static DamaPreta getRainhaPretaPromovida() {
+		return rainhaPretaPromovida;
+	}
+
+	public static DamaBranca getRainhaBrancaPromovida() {
+		return rainhaBrancaPromovida;
 	}
 
 }

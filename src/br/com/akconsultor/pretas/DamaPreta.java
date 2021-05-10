@@ -1,5 +1,6 @@
 package br.com.akconsultor.pretas;
 
+import br.com.akconsultor.Direcao;
 import br.com.akconsultor.Tabuleiro;
 
 public class DamaPreta extends PecaPreta {
@@ -248,6 +249,33 @@ public class DamaPreta extends PecaPreta {
 		casaInicial();
 		Tabuleiro.listaPretas.add(this);
 
+	}
+	
+	public DamaPreta(int i, int j) {
+		this.setPosicao(i, j);
+//		Tabuleiro.listaPretas.add(this);
+		Tabuleiro.setRainhaPretaPromovida(this);
+		this.getVerificaDestino();
+
+		if (this.verificaDestino[Tabuleiro.reiBranco[0]][Tabuleiro.reiBranco[1]]) {
+			Tabuleiro.setCheck(true);
+
+			Tabuleiro.setColunaCheck(this.getPosicaoColuna());
+			Tabuleiro.setLinhaCheck(this.getPosicaoLinha());
+			Tabuleiro.setQuantasPecasFazemCheck(Tabuleiro.getQuantasPecasFazemCheck() + 1);
+			
+			if (Tabuleiro.reiBranco[0] - Tabuleiro.getColunaCheck() == Tabuleiro.reiBranco[1] - Tabuleiro.getLinhaCheck()) {
+				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALHORARIO);
+			} else if (Tabuleiro.reiBranco[0] - Tabuleiro.getColunaCheck() == -1 * (Tabuleiro.reiBranco[1] - Tabuleiro.getLinhaCheck())) {
+				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALANTIHORARIO);
+			} else if (Tabuleiro.reiBranco[0] == Tabuleiro.getColunaCheck()) {
+				Tabuleiro.setDirecaoCheck(Direcao.VERTICAL);
+			} else if (Tabuleiro.reiBranco[1] == Tabuleiro.getLinhaCheck()) {
+				Tabuleiro.setDirecaoCheck(Direcao.HORIZONTAL);
+			} else {
+				Tabuleiro.setDirecaoCheck (Direcao.ELE);
+			}
+		}
 	}
 
 }
