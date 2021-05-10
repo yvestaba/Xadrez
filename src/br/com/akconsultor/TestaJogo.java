@@ -10,9 +10,11 @@ public class TestaJogo {
 	
 	
 	public static void main(String[] args) {
+		//sempre deve-se criar um tabuleiro e usar o método comecouOJogo assim que o jogo começa, apenas uma vez
 		Tabuleiro tabuleiro = new Tabuleiro();
 		tabuleiro.comecouOJogo();
 
+		//a criação de peças devem seguir este padrão. Quem preferir, pode mudar o nome da referência
 		PeaoBranco peao1 = new PeaoBranco();
 		PeaoBranco peao2 = new PeaoBranco();
 		PeaoBranco peao3 = new PeaoBranco();
@@ -61,6 +63,10 @@ public class TestaJogo {
 		ReiPreto reiP = new ReiPreto();
 		
 		tabuleiro.verTabuleiro();
+		/*a partir daqui, começam as jogadas. Primeiro deve-se usar o método referenciaDaPeca.getVerificaDestino.
+		 * Vai aparecer na tela as casas que a peça pode andar, indicada pelo modeo "coluna,linha"
+		 * O método de mover precisa receber a referência da peça, assim como o número da coluna e linha de destino, respectivamente
+		*/
 		
 		peao5.getVerificaDestino();
 		tabuleiro.movePecaBranca(peao5, 4, 3);

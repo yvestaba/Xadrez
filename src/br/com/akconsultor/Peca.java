@@ -5,16 +5,19 @@ public abstract class Peca {
 	protected int posicaoLinha;
 	protected String nome;
 	public boolean[][] verificaDestino = new boolean[8][8];
-	//logo abaixo a variavel que falta para impedir que o rei capture peças de maneiro que se mova ilegalmente
+	/*
+	 * variável criada somente para proibir o rei de andar em certas casas proibidas
+	 * logo abaixo
+	 */
 	public boolean[][] atrapalhaRei = new boolean[8][8];
 	protected boolean[][] podeMover = new boolean[8][8];
 	protected boolean[][] podeCapturar = new boolean[8][8];
 	protected boolean[][] podeMoverOuCapturar = new boolean[8][8];
 	protected boolean enPassantDireita = false;
 	protected boolean enPassantEsquerda = false;
-	
+
 	public abstract void setPosicao(int coluna, int linha);
-	
+
 	protected abstract void casaInicial();
 
 	public abstract void ondePodeAndar();
@@ -32,63 +35,73 @@ public abstract class Peca {
 
 	}
 
+	/*
+	 * método usado antes de mover peças. Alguns métodos chamam este, então é normal
+	 * visualizar várias verificações de destino, mesmo sem chamá-las diretamente
+	 */
 	public void getVerificaDestino() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-					
-					this.verificaDestino[i][j] = false;
-					this.podeMover[i][j] = false;
-					this.podeCapturar[i][j] = false;
-					this.podeMoverOuCapturar[i][j] = false;
-				
+
+				this.verificaDestino[i][j] = false;
+				this.podeMover[i][j] = false;
+				this.podeCapturar[i][j] = false;
+				this.podeMoverOuCapturar[i][j] = false;
+
 			}
 		}
 		ondePodeAndar();
 		podeCapturar();
 		podeAndarOuCapturar();
+		// se a peça está no meio da linha de fogo para o rei, ela não pode sair. Esse
+		// método é diferente para o próprio rei
 		protegeRei();
 		if (Tabuleiro.isCheck()) {
 			this.resolveCheck();
 		}
 		for (int i = 7; i >= 0; i--) {
 			for (int j = 0; j < 8; j++) {
-				System.out.print(j +"," + i + "" + this.verificaDestino[j][i] + " ");
+				System.out.print(j + "," + i + "" + this.verificaDestino[j][i] + " ");
 			}
 			System.out.println();
-		} System.out.println();
+		}
+		System.out.println();
 
 	}
-	
+
 	public abstract void desfazPosicao();
-	
 
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public String getPosicao() {
 		return "Coluna: " + this.posicaoColuna + " Linha: " + this.posicaoLinha;
 	}
 
-	public boolean[][] getPodeMover() {
-		return podeMover;
-	}
+	/*
+	 * Não entendi como usa métodos em matriz, depois eu vejo como faz
+	 */
 
-	public void setPodeMover(boolean[][] podeMover) {
-		this.podeMover = podeMover;
-	}
-
-	public boolean[][] getPodeCapturar() {
-		return podeCapturar;
-	}
-
-	public void setPodeCapturar(boolean[][] podeCapturar) {
-		this.podeCapturar = podeCapturar;
-	}
-
-	public boolean[][] getPodeMoverOuCapturar() {
-		return podeMoverOuCapturar;
-	}
+//	public boolean[][] getPodeMover() {
+//		return podeMover;
+//	}
+//
+//	public void setPodeMover(boolean[][] podeMover) {
+//		this.podeMover = podeMover;
+//	}
+//
+//	public boolean[][] getPodeCapturar() {
+//		return podeCapturar;
+//	}
+//
+//	public void setPodeCapturar(boolean[][] podeCapturar) {
+//		this.podeCapturar = podeCapturar;
+//	}
+//
+//	public boolean[][] getPodeMoverOuCapturar() {
+//		return podeMoverOuCapturar;
+//	}
 
 	public void setPodeMoverOuCapturar(boolean[][] podeMoverOuCapturar) {
 		this.podeMoverOuCapturar = podeMoverOuCapturar;
@@ -97,11 +110,9 @@ public abstract class Peca {
 	public void setVerificaDestino(boolean[][] verificaDestino) {
 		this.verificaDestino = verificaDestino;
 	}
-	
+
 	public void setEnPassantDireita(boolean enPassant) {
 	}
-
-
 
 	public void setEnPassantEsquerda(boolean enPassantEsquerda) {
 	}
@@ -129,35 +140,33 @@ public abstract class Peca {
 	public boolean isEnPassantEsquerda() {
 		return enPassantEsquerda;
 	}
-	
+
 	public void resetEnPassant() {
 
 	}
-	
+
+	// o tabuleiro precisa saber onde o rei está
 	public void setRei() {
-		
+
 	}
-	
+
 	public void protegeRei() {
-		
+
 	}
-	
+
+	// método criado somente para proibir o rei de andar em certas casas proibidas
 	public void resetAtrapalhaRei() {
 		for (int i = 0; i < 8; i++) {
-			for(int j = 0; j < 8; j++) {
+			for (int j = 0; j < 8; j++) {
 				this.atrapalhaRei[i][j] = false;
 			}
 		}
 	}
-	
+
+	/* se o próprio rei está em check, cada peça será proibida de se mover em certas
+	casas que normalmente poderiam */
 	public void resolveCheck() {
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

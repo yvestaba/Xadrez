@@ -31,7 +31,6 @@ public class Tabuleiro {
 	private static boolean pretoPodeRoquePequeno = true;
 	private static boolean pretoPodeRoqueGrande = true;
 
-
 	// no jogo principal, usar a função para deixar o tabuleiro vazio
 	public void comecouOJogo() {
 		for (int i = 0; i < 8; i++) {
@@ -57,7 +56,7 @@ public class Tabuleiro {
 		if (vezDosBrancos) {
 
 			if (a.verificaDestino[colunaDestino][linhaDestino]) {
-
+				// primeiro if do en passant, o peao deve estar em sua casa inicial
 				for (int i = 0; i < 8; i++) {
 					if (Tabuleiro.layout[i][1] == "P") {
 						Tabuleiro.checaEnPassant[i] = true;
@@ -75,7 +74,7 @@ public class Tabuleiro {
 				if (colunaAnterior == 4 && linhaAnterior == 0 && isBrancoPodeRoqueGrande() && colunaDestino == 2
 						&& linhaDestino == 0) {
 					for (PecaBranca peca : listaBrancas) {
-						if(peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 0) {
+						if (peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 0) {
 							peca.desfazPosicao();
 							peca.setPosicao(3, 0);
 							peca.resetAtrapalhaRei();
@@ -84,7 +83,7 @@ public class Tabuleiro {
 				} else if (colunaAnterior == 4 && linhaAnterior == 0 && isBrancoPodeRoquePequeno() && colunaDestino == 6
 						&& linhaDestino == 0) {
 					for (PecaBranca peca : listaBrancas) {
-						if(peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 0) {
+						if (peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 0) {
 							peca.desfazPosicao();
 							peca.setPosicao(5, 0);
 							peca.resetAtrapalhaRei();
@@ -92,23 +91,32 @@ public class Tabuleiro {
 					}
 				}
 
-				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 5) {
+				// se o peão andou em en passant, a peça logo atrás dele deve ser removida
+				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 5
+						&& Tabuleiro.temPecaPreta[a.getPosicaoColuna()][5] == false) {
 					Tabuleiro.layout[a.getPosicaoColuna()][4] = " ";
 					Tabuleiro.temPecaPreta[a.getPosicaoColuna()][4] = false;
 					System.out.println("en Passant");
 				}
 
-				if (a.isEnPassantEsquerda() && a.getPosicaoColuna() == colunaAnterior - 1 && a.getPosicaoLinha() == 5) {
-					Tabuleiro.layout[a.getPosicaoColuna()][a.getPosicaoLinha() - 1] = " ";
-					Tabuleiro.temPecaPreta[a.getPosicaoColuna()][a.getPosicaoLinha() - 1] = false;
+				if (a.isEnPassantEsquerda() && a.getPosicaoColuna() == colunaAnterior - 1 && a.getPosicaoLinha() == 5
+						&& Tabuleiro.temPecaPreta[a.getPosicaoColuna()][5] == false) {
+					Tabuleiro.layout[a.getPosicaoColuna()][4] = " ";
+					Tabuleiro.temPecaPreta[a.getPosicaoColuna()][4] = false;
 					System.out.println("enPassant");
 				}
-
+				// remove a peça do tabuleiro
 				a.getCapturou();
+				// enPassant passa a ser falso novamente
 				a.resetEnPassant();
+				// a variável atrapalharei reinicia e só volta a ser true na próxima rodada
 				a.resetAtrapalhaRei();
+				// se o rei mudou de posição, o tabuleiro deve saber
 				a.setRei();
-
+				/*
+				 * segundo if que verifica en passant. Se a peça saiu da casa inicial e foi para
+				 * duas casas à frente, o en passant será legalizado na próxima rodada
+				 */
 				for (int i = 0; i < 8; i++) {
 					if (Tabuleiro.layout[i][3] == "P" && Tabuleiro.layout[i][1] == " " && Tabuleiro.checaEnPassant[i]) {
 
@@ -116,7 +124,11 @@ public class Tabuleiro {
 						Tabuleiro.checaEnPassant[i] = false;
 					}
 				}
-
+				/*
+				 * se a peça foi capturada, ela deve ocupar uma linha e coluna que não existe no
+				 * tabuleiro. assim não atrapalha os métodos que usam a posição de determinadas
+				 * peças no jogo
+				 */
 				for (PecaPreta peca : listaPretas) {
 					try {
 						if (layout[peca.getPosicaoColuna()][peca.getPosicaoLinha()] != peca.getNome()) {
@@ -158,11 +170,11 @@ public class Tabuleiro {
 
 				a.desfazPosicao();
 				a.setPosicao(colunaDestino, linhaDestino);
-				
+
 				if (colunaAnterior == 4 && linhaAnterior == 7 && isPretoPodeRoqueGrande() && colunaDestino == 2
 						&& linhaDestino == 7) {
 					for (PecaPreta peca : listaPretas) {
-						if(peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 7) {
+						if (peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 7) {
 							peca.desfazPosicao();
 							peca.setPosicao(3, 7);
 							peca.resetAtrapalhaRei();
@@ -171,7 +183,7 @@ public class Tabuleiro {
 				} else if (colunaAnterior == 4 && linhaAnterior == 7 && isPretoPodeRoquePequeno() && colunaDestino == 6
 						&& linhaDestino == 7) {
 					for (PecaBranca peca : listaBrancas) {
-						if(peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 7) {
+						if (peca.getPosicaoColuna() == 7 && peca.getPosicaoLinha() == 7) {
 							peca.desfazPosicao();
 							peca.setPosicao(5, 7);
 							peca.resetAtrapalhaRei();
@@ -179,15 +191,17 @@ public class Tabuleiro {
 					}
 				}
 
-				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 2) {
-					Tabuleiro.layout[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = " ";
-					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = false;
+				if (a.isEnPassantDireita() && a.getPosicaoColuna() == colunaAnterior + 1 && a.getPosicaoLinha() == 2
+						&& Tabuleiro.temPecaBranca[a.getPosicaoColuna()][2] == false) {
+					Tabuleiro.layout[a.getPosicaoColuna()][3] = " ";
+					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][3] = false;
 					System.out.println("en Passant");
 				}
 
-				if (a.isEnPassantEsquerda() && a.getPosicaoColuna() == colunaAnterior - 1 && a.getPosicaoLinha() == 2) {
-					Tabuleiro.layout[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = " ";
-					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][a.getPosicaoLinha() + 1] = false;
+				if (a.isEnPassantEsquerda() && a.getPosicaoColuna() == colunaAnterior - 1 && a.getPosicaoLinha() == 2
+						&& Tabuleiro.temPecaBranca[a.getPosicaoColuna()][2] == false) {
+					Tabuleiro.layout[a.getPosicaoColuna()][3] = " ";
+					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][3] = false;
 					System.out.println("en Passant");
 				}
 
