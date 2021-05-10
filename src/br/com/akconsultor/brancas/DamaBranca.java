@@ -1,6 +1,5 @@
 package br.com.akconsultor.brancas;
 
-import br.com.akconsultor.Direcao;
 import br.com.akconsultor.Tabuleiro;
 
 public class DamaBranca extends PecaBranca {
@@ -252,27 +251,28 @@ public class DamaBranca extends PecaBranca {
 	public DamaBranca(int i, int j) {
 		this.setPosicao(i, j);
 //		Tabuleiro.listaBrancas.add(this);
-		this.getVerificaDestino();
+//		this.getVerificaDestino();
 		Tabuleiro.setRainhaBrancaPromovida(this);
+		Tabuleiro.listaBrancas.add(this);
 
-		if (this.verificaDestino[Tabuleiro.reiPreto[0]][Tabuleiro.reiPreto[1]]) {
-			Tabuleiro.setCheck(true);
-
-			Tabuleiro.setColunaCheck(this.getPosicaoColuna());
-			Tabuleiro.setLinhaCheck(this.getPosicaoLinha());
-			Tabuleiro.setQuantasPecasFazemCheck(Tabuleiro.getQuantasPecasFazemCheck() + 1);
-			
-			if (Tabuleiro.reiPreto[0] - Tabuleiro.getColunaCheck() == Tabuleiro.reiPreto[1] - Tabuleiro.getLinhaCheck()) {
-				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALHORARIO);
-			} else if (Tabuleiro.reiPreto[0] - Tabuleiro.getColunaCheck() == -1 * (Tabuleiro.reiPreto[1] - Tabuleiro.getLinhaCheck())) {
-				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALANTIHORARIO);
-			} else if (Tabuleiro.reiPreto[0] == Tabuleiro.getColunaCheck()) {
-				Tabuleiro.setDirecaoCheck(Direcao.VERTICAL);
-			} else if (Tabuleiro.reiPreto[1] == Tabuleiro.getLinhaCheck()) {
-				Tabuleiro.setDirecaoCheck(Direcao.HORIZONTAL);
-			} else {
-				Tabuleiro.setDirecaoCheck (Direcao.ELE);
-			}
-		}
+//		if (this.verificaDestino[Tabuleiro.reiPreto[0]][Tabuleiro.reiPreto[1]]) {
+//			Tabuleiro.setCheck(true);
+//
+//			Tabuleiro.setColunaCheck(this.getPosicaoColuna());
+//			Tabuleiro.setLinhaCheck(this.getPosicaoLinha());
+//			Tabuleiro.setQuantasPecasFazemCheck(Tabuleiro.getQuantasPecasFazemCheck() + 1);
+//			
+//			if (Tabuleiro.reiPreto[0] - Tabuleiro.getColunaCheck() == Tabuleiro.reiPreto[1] - Tabuleiro.getLinhaCheck()) {
+//				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALHORARIO);
+//			} else if (Tabuleiro.reiPreto[0] - Tabuleiro.getColunaCheck() == -1 * (Tabuleiro.reiPreto[1] - Tabuleiro.getLinhaCheck())) {
+//				Tabuleiro.setDirecaoCheck(Direcao.DIAGONALANTIHORARIO);
+//			} else if (Tabuleiro.reiPreto[0] == Tabuleiro.getColunaCheck()) {
+//				Tabuleiro.setDirecaoCheck(Direcao.VERTICAL);
+//			} else if (Tabuleiro.reiPreto[1] == Tabuleiro.getLinhaCheck()) {
+//				Tabuleiro.setDirecaoCheck(Direcao.HORIZONTAL);
+//			} else {
+//				Tabuleiro.setDirecaoCheck (Direcao.ELE);
+//			}
+//		}
 	}
 }

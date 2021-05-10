@@ -74,9 +74,11 @@ public class Tabuleiro {
 
 				a.desfazPosicao();
 				a.setPosicao(colunaDestino, linhaDestino);
-
+				
+				//fazendo roque
 				if (colunaAnterior == 4 && linhaAnterior == 0 && isBrancoPodeRoqueGrande() && colunaDestino == 2
 						&& linhaDestino == 0) {
+					//procurando a torre
 					for (PecaBranca peca : listaBrancas) {
 						if (peca.getPosicaoColuna() == 0 && peca.getPosicaoLinha() == 0) {
 							peca.desfazPosicao();
@@ -110,7 +112,11 @@ public class Tabuleiro {
 					System.out.println("enPassant");
 				}
 				// remove a peça do tabuleiro
+				try {
 				a.getCapturou();
+				} catch (Exception ex) {
+					
+				}
 				// enPassant passa a ser falso novamente
 				a.resetEnPassant();
 				// a variável atrapalharei reinicia e só volta a ser true na próxima rodada
@@ -174,7 +180,11 @@ public class Tabuleiro {
 
 				a.desfazPosicao();
 				a.setPosicao(colunaDestino, linhaDestino);
-
+				
+				if (linhaDestino == 0 && a.getNome() == "i") {
+					TestaJogo.promovePeaoDamaPreta(a);
+				}
+				
 				if (colunaAnterior == 4 && linhaAnterior == 7 && isPretoPodeRoqueGrande() && colunaDestino == 2
 						&& linhaDestino == 7) {
 					for (PecaPreta peca : listaPretas) {
@@ -208,8 +218,9 @@ public class Tabuleiro {
 					Tabuleiro.temPecaBranca[a.getPosicaoColuna()][3] = false;
 					System.out.println("en Passant");
 				}
-
+				try {
 				a.getCapturou();
+				} catch (Exception ex) {}
 				a.resetEnPassant();
 				a.resetAtrapalhaRei();
 				a.setRei();
@@ -308,9 +319,9 @@ public class Tabuleiro {
 
 	private void verificaCheckBrancas() {
 		for (PecaBranca peca : listaBrancas) {
-			if (peca.getPosicaoLinha() == 7 && peca.getNome() == "P") {
-				TestaJogo.promovePeaoDamaBranca(peca);
-			}
+//			if (peca.getPosicaoLinha() == 7 && peca.getNome() == "P") {
+//				TestaJogo.promovePeaoDamaBranca(peca);
+//			}
 			try {
 				peca.getVerificaDestino();
 				for (int i = 0; i < 8; i++) {
@@ -341,9 +352,9 @@ public class Tabuleiro {
 			} catch (ArrayIndexOutOfBoundsException ex) {
 			}
 		}
-		if (rainhaBrancaPromovida != null && listaBrancas.contains(rainhaBrancaPromovida) == false) {
-			listaBrancas.add(rainhaBrancaPromovida);
-		}
+//		if (rainhaBrancaPromovida != null && listaBrancas.contains(rainhaBrancaPromovida) == false) {
+//			listaBrancas.add(rainhaBrancaPromovida);
+//		}
 		if (check) {
 			for (PecaPreta peca : listaPretas) {
 				try {
@@ -360,24 +371,24 @@ public class Tabuleiro {
 				} catch (ArrayIndexOutOfBoundsException ex) {
 
 				}
+			}if (Tabuleiro.checkMate) {
+				System.out.println("Check Mate!");
+			} else {
+				System.out.println("Check!");
+				Tabuleiro.checkMate = true;
 			}
 		}
 
-		if (Tabuleiro.checkMate) {
-			System.out.println("Check Mate!");
-		} else {
-			System.out.println("Check!");
-			Tabuleiro.checkMate = true;
-		}
+		
 	
 
 	}
 
 	private void verificaCheckPretas() {
 		for (PecaPreta peca : listaPretas) {
-			if (peca.getPosicaoLinha() == 0 && peca.getNome() == "i") {
-				TestaJogo.promovePeaoDamaPreta(peca);
-			}
+//			if (peca.getPosicaoLinha() == 0 && peca.getNome() == "i") {
+//				TestaJogo.promovePeaoDamaPreta(peca);
+//			}
 			try {
 				peca.getVerificaDestino();
 				int i = reiBranco[0];
@@ -408,9 +419,9 @@ public class Tabuleiro {
 			}
 		}
 
-		if (rainhaPretaPromovida != null && listaPretas.contains(rainhaPretaPromovida) == false) {
-			listaPretas.add(rainhaPretaPromovida);
-		}
+//		if (rainhaPretaPromovida != null && listaPretas.contains(rainhaPretaPromovida) == false) {
+//			listaPretas.add(rainhaPretaPromovida);
+//		}
 
 		if (check) {
 			for (PecaBranca peca : listaBrancas) {
@@ -428,15 +439,15 @@ public class Tabuleiro {
 				} catch (ArrayIndexOutOfBoundsException ex) {
 
 				}
+			} if (Tabuleiro.checkMate) {
+				System.out.println("Check Mate!");
+			} else {
+				System.out.println("Check!");
+				Tabuleiro.checkMate = true;
 			}
 		}
 
-		if (Tabuleiro.checkMate) {
-			System.out.println("Check Mate!");
-		} else {
-			System.out.println("Check!");
-			Tabuleiro.checkMate = true;
-		}
+		
 
 	}
 

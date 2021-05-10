@@ -9,7 +9,7 @@ public class TestaJogo {
 	public static void promovePeaoDamaBranca(PecaBranca peaoBranco) {
 		if(peaoBranco.getPosicaoLinha() == 7) {
 			
-			DamaBranca damaB2 = new DamaBranca(peaoBranco.getPosicaoColuna(), 7);
+			new DamaBranca(peaoBranco.getPosicaoColuna(), 7);
 			peaoBranco.setPosicaoLinha(50);
 			peaoBranco.setPosicaoColuna(50);
 		}
@@ -18,7 +18,7 @@ public class TestaJogo {
 	public static void promovePeaoDamaPreta(PecaPreta peaoPreto) {
 		if(peaoPreto.getPosicaoLinha() == 0) {
 			
-			DamaPreta damaP2 = new DamaPreta(peaoPreto.getPosicaoColuna(), 0);
+			new DamaPreta(peaoPreto.getPosicaoColuna(), 0);
 			peaoPreto.setPosicaoLinha(50);
 			peaoPreto.setPosicaoColuna(50);
 		}
@@ -31,6 +31,10 @@ public class TestaJogo {
 		tabuleiro.comecouOJogo();
 
 		//a criação de peças devem seguir este padrão. Quem preferir, pode mudar o nome da referência
+		/*quando um peão é promovido para dama, é necessário criar uma nova referência para a nova dama
+		 * Modelo: DamaPreta damaPretaPromovida = Tabuleiro.getRainhaPretaPromovida();
+		 */
+		
 		PeaoBranco peao1 = new PeaoBranco();
 		PeaoBranco peao2 = new PeaoBranco();
 		PeaoBranco peao3 = new PeaoBranco();
@@ -80,110 +84,144 @@ public class TestaJogo {
 		
 		tabuleiro.verTabuleiro();
 		/*a partir daqui, começam as jogadas. Primeiro deve-se usar o método referenciaDaPeca.getVerificaDestino.
-		 * Vai aparecer na tela as casas que a peça pode andar, indicada pelo modeo "coluna,linha"
+		 * Vai aparecer na tela as casas que a peça pode andar, indicada pelo modeo "coluna,linha" com a palavra true do lado
 		 * O método de mover precisa receber a referência da peça, assim como o número da coluna e linha de destino, respectivamente
 		*/
 		
 		peao5.getVerificaDestino();
 		tabuleiro.movePecaBranca(peao5, 4, 3);
 		
-		p3.getVerificaDestino();
-		tabuleiro.movePecaPreta(p3, 5, 4);
+		p4.getVerificaDestino();
+		tabuleiro.movePecaPreta(p4, 4, 4);
 		
-		peao5.getVerificaDestino();
-		tabuleiro.movePecaBranca(peao5, 5, 4);
-		
-		p1.getVerificaDestino();
-		tabuleiro.movePecaPreta(p1, 7, 4);
-		
-		damaB.getVerificaDestino();
-		tabuleiro.movePecaBranca(damaB, 7, 4);
-		
-		t1.getVerificaDestino();
-		tabuleiro.movePecaPreta(t1, 7, 4);
-		
-		bispo2.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo2, 4, 1);
-		
-		p6.getVerificaDestino();
-		tabuleiro.movePecaPreta(p6, 2, 4);
-		
-		bispo2.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo2, 7, 4);
-		
-		p2.getVerificaDestino();
-		tabuleiro.movePecaPreta(p2, 6, 5);
-		
-		peao2.getVerificaDestino();
-		tabuleiro.movePecaBranca(peao2, 1, 3);
-		
-		p5.getVerificaDestino();
-		tabuleiro.movePecaPreta(p5, 3, 4);
-		
-		bispo2.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo2, 6, 5);
-		
-		reiP.getVerificaDestino();
-		tabuleiro.movePecaPreta(reiP, 3, 6);
-		
-		peao5.getVerificaDestino();
-		tabuleiro.movePecaBranca(peao5, 5, 5);
+		peao6.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao6, 5, 3);
 		
 		p4.getVerificaDestino();
-		tabuleiro.movePecaPreta(p4, 5, 5);
+		tabuleiro.movePecaPreta(p4, 5, 3);
 		
-		cavalo1.getVerificaDestino();
-		tabuleiro.movePecaBranca(cavalo1, 2, 2);
+		bispo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo2, 2, 3);
 		
 		damaP.getVerificaDestino();
-		tabuleiro.movePecaPreta(damaP, 4, 7);
+		tabuleiro.movePecaPreta(damaP, 7, 3);
 		
-		cavalo1.getVerificaDestino();
-		tabuleiro.movePecaBranca(cavalo1, 4, 1);
+		reiB.getVerificaDestino();
+		tabuleiro.movePecaBranca(reiB, 5, 0);
 		
-		reiP.getVerificaDestino();
-		tabuleiro.movePecaPreta(reiP, 2, 6);
+		p7.getVerificaDestino();
+		tabuleiro.movePecaPreta(p7, 1, 4);
 		
-		peao1.getVerificaDestino();
-		tabuleiro.movePecaBranca(peao1, 0, 2);
+		bispo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo2, 1, 4);
 		
-		b2.getVerificaDestino();
-		tabuleiro.movePecaPreta(b2, 6, 3);
+		c1.getVerificaDestino();
+		tabuleiro.movePecaPreta(c1, 5, 5);
 		
 		cavalo2.getVerificaDestino();
 		tabuleiro.movePecaBranca(cavalo2, 5, 2);
 		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 7, 5);
+		
+		peao4.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao4, 3, 2);
+		
+		c1.getVerificaDestino();
+		tabuleiro.movePecaPreta(c1, 7, 4);
+		
+		cavalo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo2, 7, 3);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 6, 4);
+		
+		cavalo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo2, 5, 4);
+		
 		p6.getVerificaDestino();
-		tabuleiro.movePecaPreta(p6, 1, 3);
+		tabuleiro.movePecaPreta(p6, 2, 5);
+		
+		peao7.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao7, 6, 3);
+		
+		c1.getVerificaDestino();
+		tabuleiro.movePecaPreta(c1, 5, 5);
+		
+		torre2.getVerificaDestino();
+		tabuleiro.movePecaBranca(torre2, 6, 0);
+		
+		p6.getVerificaDestino();
+		tabuleiro.movePecaPreta(p6, 1, 4);
+		
+		peao8.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao8, 7, 3);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 6, 5);
+		
+		peao8.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao8, 7, 4);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 6, 4);
+		
+		damaB.getVerificaDestino();
+		tabuleiro.movePecaBranca(damaB, 5, 2);
+		
+		c1.getVerificaDestino();
+		tabuleiro.movePecaPreta(c1, 6, 7);
 		
 		bispo1.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo1, 1, 1);
+		tabuleiro.movePecaBranca(bispo1, 5, 3);
 		
-		c2.getVerificaDestino();
-		tabuleiro.movePecaPreta(c2, 2, 5);
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 5, 5);
+		
+		cavalo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo1, 2, 2);
+		
+		b1.getVerificaDestino();
+		tabuleiro.movePecaPreta(b1, 2, 4);
+		
+		cavalo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo1, 3, 4);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 1, 1);
+		
+		bispo1.getVerificaDestino();
+		tabuleiro.movePecaBranca(bispo1, 3, 5);
+		
+		b1.getVerificaDestino();
+		tabuleiro.movePecaPreta(b1, 6, 0);
+		
+		peao5.getVerificaDestino();
+		tabuleiro.movePecaBranca(peao5, 4, 4);
+		
+		damaP.getVerificaDestino();
+		tabuleiro.movePecaPreta(damaP, 0, 0);
 		
 		reiB.getVerificaDestino();
-		tabuleiro.movePecaBranca(reiB, 2, 0);
+		tabuleiro.movePecaBranca(reiB, 4, 1);
 		
-		p6.getVerificaDestino();
-		tabuleiro.movePecaPreta(p6, 0, 2);
+		c2.getVerificaDestino();
+		tabuleiro.movePecaPreta(c2, 0, 5);
+		
+		cavalo2.getVerificaDestino();
+		tabuleiro.movePecaBranca(cavalo2, 6, 6);
+		
+		reiP.getVerificaDestino();
+		tabuleiro.movePecaPreta(reiP, 3, 7);
+		
+		damaB.getVerificaDestino();
+		tabuleiro.movePecaBranca(damaB, 5, 5);
+		
+		c1.getVerificaDestino();
+		tabuleiro.movePecaPreta(c1, 5, 5);
 		
 		bispo1.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo1, 2, 2);
-		
-		p6.getVerificaDestino();
-		tabuleiro.movePecaPreta(p6, 0, 1);
-		
-		bispo1.getVerificaDestino();
-		tabuleiro.movePecaBranca(bispo1, 3, 3);
-		
-		p6.getVerificaDestino();
-		tabuleiro.movePecaPreta(p6, 0, 0);
-		
-		DamaPreta damaPPromovida = Tabuleiro.getRainhaPretaPromovida();
-		
-		damaPPromovida.getVerificaDestino();
-		
+		tabuleiro.movePecaBranca(bispo1, 4, 6);
 	}
 
 }
